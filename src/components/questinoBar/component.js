@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export class Name extends Componet {
+export class QuestionBar extends Component {
     render() {
         return(
-            <div></div>
+            <div>QuestionBar</div>
         )
     }
 }

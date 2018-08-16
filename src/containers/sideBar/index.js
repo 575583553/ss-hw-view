@@ -1,1 +1,1 @@
-export { Name } from './style';
+export { SideBar } from './style';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-import { Name as component } from './component';
+import { TopBar as component } from './component';
 
-export const Name = styled(component)``;
+export const TopBar = styled(component)``;

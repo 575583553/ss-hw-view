@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-import { Name as component } from './component';
+import { Panel as component } from './component';
 
-export const Name = styled(component)``;
+export const Panel = styled(component)``;

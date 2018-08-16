@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-export class Name extends Componet {
+export class TopBar extends Component {
     render() {
         return(
-            <div></div>
+            <div>tobbar</div>
         )
     }
 }
