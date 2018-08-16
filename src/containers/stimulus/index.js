@@ -1,0 +1,1 @@
+export { Stimulus } from './style';
