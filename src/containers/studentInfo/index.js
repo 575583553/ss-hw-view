@@ -1,0 +1,1 @@
+export { StudentInfo } from './style';
