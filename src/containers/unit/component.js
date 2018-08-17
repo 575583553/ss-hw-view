@@ -1,40 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { Title } from '../../components/title';
-import { timingSafeEqual } from 'crypto';
 
 export class Unit extends Component {
-  constructor(props) {
+  constructor(props, context) {
     super(props);
-    this.state = {
-      units: [
-        {
-          name: 'unit 1',
-          key: '123',
-        },
-        {
-          name: 'unit 2',
-          key: '123',
-        },
-        {
-          name: 'unit 3',
-          key: '123',
-        },
-        {
-          name: 'unit 4',
-          key: '123',
-        },
-      ],
-    };
   }
   render() {
+    const unit = this.context.unit;
     return (
       <div className={this.props.className}>
-        {this.state.units.map((item, index) => {
+        {unit.length > 0 && unit.map((item) => {
           return (
-            <Link to={{ pathname: '/lesson', state: item.key }} key={index}>
-              <Title text={item.name} />
+            <Link to={{ pathname: '/lesson', state: item.Key }} key={item.Sequence}>
+              <Title text={item.Name} />
             </Link>
           );
         })}
@@ -42,3 +23,7 @@ export class Unit extends Component {
     );
   }
 }
+
+Unit.contextTypes = {
+  unit: PropTypes.array
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Http from '../../servers/http';
 import { TopBar } from '../topBar';
@@ -12,6 +13,8 @@ export class LessonPanel extends Component {
       data: [],
       sudents: [],
     };
+    console.log(this.props.location.state);
+    console.log(this);
   }
 
   componentWillMount() {
@@ -45,3 +48,7 @@ export class LessonPanel extends Component {
     );
   }
 }
+
+LessonPanel.contextTypes = {
+  lessonInfo: PropTypes.array
+};

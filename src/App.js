@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -6,18 +7,40 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Http from './servers/http';
+import GetData from './servers/getData';
 import { Unit } from './containers/unit';
 import { LessonPanel } from './containers/lessonPanel';
 import { ResultPanel } from './containers/resultPanel';
 
 class App extends Component {
-  checkToken = (component) => {
-    return component;
-  };
-  componentWillMount() {
-    console.log('willMount');
+  constructor(props) {
+    super(props);
+    this.state = {
+      unit: [],
+      lessonInfo: []
+    }
   }
+
+  getChildContext() {
+    return {
+      unit: this.state.unit,
+      lessonInfo: this.state.lessonInfo
+    };
+  }
+
+  componentWillMount() {
+    GetData.getUnit()
+    .then(res => {
+      this.setState({unit: res})
+    });
+
+    GetData.getLesson()
+    .then(res => {
+      this.setState({lessonInfo: res})
+      console.log(res);
+    })
+  }
+
   componentDidCatch(error) {
     console.log(error);
   }
@@ -35,6 +58,11 @@ class App extends Component {
       </Router>
     );
   }
+}
+
+App.childContextTypes = {
+  unit: PropTypes.array,
+  lessonInfo: PropTypes.array
 }
 
 export default App;
