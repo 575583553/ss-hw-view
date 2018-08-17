@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 
+import Http from './servers/http';
 import { Unit } from './containers/unit';
 import { LessonPanel } from './containers/lessonPanel';
 import { ResultPanel } from './containers/resultPanel';
@@ -11,6 +12,9 @@ class App extends Component {
   }
   componentWillMount() {
     console.log('willMount');
+  }
+  componentDidCatch(error) {
+    console.log(error);
   }
 
   render() {
