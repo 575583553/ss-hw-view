@@ -18,7 +18,7 @@ class App extends Component {
     this.state = {
       unit: [],
       lessonInfo: []
-    }
+    };
   }
 
   getChildContext() {
@@ -31,14 +31,14 @@ class App extends Component {
   componentWillMount() {
     GetData.getUnit()
     .then(res => {
-      this.setState({unit: res})
+      this.setState({unit: res});
     });
 
     GetData.getLesson()
     .then(res => {
-      this.setState({lessonInfo: res})
+      this.setState({lessonInfo: res});
       console.log(res);
-    })
+    });
   }
 
   componentDidCatch(error) {
@@ -63,6 +63,6 @@ class App extends Component {
 App.childContextTypes = {
   unit: PropTypes.array,
   lessonInfo: PropTypes.array
-}
+};
 
 export default App;

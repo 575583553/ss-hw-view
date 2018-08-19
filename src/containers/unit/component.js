@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Title } from '../../components/title';
 
 export class Unit extends Component {
-  constructor(props, context) {
+  constructor(props/* , context */) {
     super(props);
   }
   render() {

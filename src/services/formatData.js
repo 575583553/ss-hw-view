@@ -30,8 +30,8 @@ class FormatData {
                 ParentNodeKey: lesson.ParentNodeKey,
                 lessonKey: lesson.Key,
                 activitys: [] 
-            })
-        })
+            });
+        });
         // generate activity level model
         activityInfo.forEach(activity => {
             let belongLesson;
@@ -39,7 +39,7 @@ class FormatData {
                 const match = lesson.lessonKey === activity.ParentNodeKey;
                 if (match) belongLesson = result[lIdx];
                 return match;
-            })
+            });
             const activityKey = activity.Key;
             belongLesson.activitys.push({
                 activityKey,

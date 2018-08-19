@@ -17,6 +17,6 @@ export class StudentInfo extends Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

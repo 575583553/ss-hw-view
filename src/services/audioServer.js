@@ -1,8 +1,10 @@
 import { Howl } from 'howler';
 
 class AudioService {
-  playList = []; // store all the audios
-  currentTimeInterval = {}; // store all the intervals
+  constructor() {
+    this.playList = []; // store all the audios
+    this.currentTimeInterval = {}; // store all the intervals
+  }
 
   add(audioSrc, options) {
     if (!audioSrc) return;
