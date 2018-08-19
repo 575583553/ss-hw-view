@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Http from '../../servers/http';
+import Http from '../../services/http';
 import { TopBar } from '../topBar';
 import { SideBar } from '../sideBar';
 import { Info } from '../info';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Http from '../../servers/http';
+import Http from '../../serices/http';
 import { Answer } from '../answer';
 
 export class ResultPanel extends Component {

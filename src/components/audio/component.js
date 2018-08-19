@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AudioService from '../../servers/audioServer';
+import AudioService from '../../services/audioServer';
 
 export class Audio extends Component {
   constructor(props) {

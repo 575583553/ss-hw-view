@@ -7,7 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import GetData from './servers/getData';
+import GetData from './services/getData';
 import { Unit } from './containers/unit';
 import { LessonPanel } from './containers/lessonPanel';
 import { ResultPanel } from './containers/resultPanel';
