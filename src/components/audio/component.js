@@ -44,7 +44,7 @@ export class Audio extends Component {
   }
 
   play() {
-    AudioService.stopAnother(this.sound);
+    AudioService.stopAll(this.sound);
     this.sound.play();
   }
 

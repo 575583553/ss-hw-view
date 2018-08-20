@@ -42,6 +42,9 @@ class App extends Component {
 
 
   componentDidMount() {
+    // if(window.location.search.indexOf('token') === -1) {
+    //   alert('error')
+    // }
     this.getData();
   }
 

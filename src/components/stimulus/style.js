@@ -10,6 +10,7 @@ export const Stimulus = styled(component)`
   align-items: center;
   flex-direction: column;
   .title-container {
+    width: 100%;
     height: ${(props) =>
       props.data.audio || props.data.image ? '30%' : '100%'};
     font-size: ${(props) => (props.size ? props.size : '12px')};

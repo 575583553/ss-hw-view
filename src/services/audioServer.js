@@ -39,8 +39,15 @@ class AudioService {
     });
   }
 
-  stopAll() {
-    this.playList.forEach((howl) => howl.stop());
+  stopAll(audio) {
+    this.playList.forEach((howl) => {
+      if (audio && howl === audio) {
+        howl.pause();
+      }
+      else {
+        howl.stop();
+      }
+    });
   }
 
   pauseAll() {
