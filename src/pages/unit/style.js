@@ -10,7 +10,6 @@ export const Unit = styled(component)`
   display: flex;
   border: 1px solid #ccc;
   a {
-    text-decoration: none;
     flex: 1;
     border-left: 1px solid #ccc;
   }

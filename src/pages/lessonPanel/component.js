@@ -8,27 +8,25 @@ export class LessonPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
       sudents: [],
     };
   }
 
   componentDidMount() {
-    Http.get({ url: 'http://10.128.36.152:8080/lessonInfo' }).then((res) => {
-      this.setState({ data: res.data });
-    });
     Http.get({ url: 'http://10.128.36.152:8080/studentsInfo' }).then((res) => {
       this.setState({ sudents: res.data });
     });
   }
 
   render() {
+    const lessonInfo = this.context.lessonInfo;
+    const state = this.props.location.state;
     return (
       <div className={this.props.className}>
-        {this.state.data.length > 0 && (
+        {lessonInfo.length > 0 && (
           <div className="lesson-contianer">
             <div className="topBar-container">
-              <TopBar data={this.state.data[0].lessons} />
+              <TopBar data={lessonInfo} state={state}/>
             </div>
             <div className="main-container">
               <div className="sideBar-container">
@@ -50,6 +48,7 @@ LessonPanel.contextTypes = {
 };
 
 LessonPanel.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  location: PropTypes.object
 };
 

@@ -27,9 +27,10 @@ class FormatData {
 
         lessonInfo.forEach((lesson) => {
             result.push({
+                Sequence: lesson.Sequence,
                 ParentNodeKey: lesson.ParentNodeKey,
                 lessonKey: lesson.Key,
-                activitys: [] 
+                activitys: []
             });
         });
         // generate activity level model
