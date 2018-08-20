@@ -15,6 +15,14 @@ class FormatData {
         return this.seekInfo(info, 8);
     }
 
+    setArray(info) {
+      const array = new Set();
+      info.forEach(item => {
+        array.add(item.StudentId);
+      });
+      return array;
+    }
+
     activity(info) {
         return this.seekInfo(info, 16);
     }
@@ -89,6 +97,30 @@ class FormatData {
           });
         });
         return result;
+    }
+
+    parserAnswer(info) {
+      const result = [];
+      const studentsId = this.setArray(info);
+
+      studentsId.forEach((id) => {
+        result.push({
+          studentId: id,
+          activitys: []
+        });
+      });
+
+      info.forEach((answer) => {
+        let belongStudent;
+        result.some((item, index) => {
+          const match = item.studentId === answer.StudentId;
+          if (match) belongStudent = result[index];
+          return match;
+        });
+        belongStudent.activitys.push(answer);
+      });
+
+      return result;
     }
 }
 

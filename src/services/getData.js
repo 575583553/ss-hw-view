@@ -27,6 +27,12 @@ class GetData {
       });
     });
   }
+
+  getStudentAnswer() {
+    return this.getAnswerInfo().then(res => {
+      return FormatData.parserAnswer(res.data);
+    });
+  }
 }
 
 export default new GetData();

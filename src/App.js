@@ -15,28 +15,32 @@ class App extends Component {
     super(props);
     this.state = {
       unit: [],
-      lessonInfo: []
+      lessonInfo: [],
+      studentsAnswer: []
     };
 
     this.getData = this.getData.bind(this);
   }
   
   getData() {
-    GetData.getUnit()
-    .then(res => {
+    GetData.getUnit().then(res => {
       this.setState({unit: res});
     });
 
-    GetData.getLesson()
-    .then(res => {
+    GetData.getLesson().then(res => {
       this.setState({lessonInfo: res});
+    });
+
+    GetData.getStudentAnswer().then(res => {
+      this.setState({studentsAnswer: res});
     });
   }
 
   getChildContext() {
     return {
       unit: this.state.unit,
-      lessonInfo: this.state.lessonInfo
+      lessonInfo: this.state.lessonInfo,
+      studentsAnswer: this.state.studentsAnswer
     };
   }
 
@@ -68,7 +72,8 @@ class App extends Component {
 
 App.childContextTypes = {
   unit: PropTypes.array,
-  lessonInfo: PropTypes.array
+  lessonInfo: PropTypes.array,
+  studentsAnswer: PropTypes.array
 };
 
 export default App;
