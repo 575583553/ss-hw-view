@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Image } from '../image';
-import { Text } from '../text';
+import {Image, Text} from '../index';
 
 export class StudentInfo extends Component {
     render() {

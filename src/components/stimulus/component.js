@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Audio } from '../audio';
-import { Image } from '../image';
-import { Text } from '../text';
+// import { Audio } from '../audio';
+// import { Image } from '../image';
+// import { Text } from '../text';
+import { Audio, Image, Text} from '../index';
 
 export class Stimulus extends Component {
   render() {

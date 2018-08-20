@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Http from '../../services/http';
-import { TopBar } from '../../containers/topBar';
-import { SideBar } from '../../containers/sideBar';
-import { Info } from '../../containers/info';
+import { TopBar, SideBar, Info } from '../../containers';
 
 export class LessonPanel extends Component {
   constructor(props) {

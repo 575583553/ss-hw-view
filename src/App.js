@@ -7,10 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import GetData from './services/getData';
-import { Unit } from './pages/unit';
-import { LessonPanel } from './pages/lessonPanel';
-import { ResultPanel } from './pages/resultPanel';
+import { GetData } from './services';
+import { Unit, LessonPanel, ResultPanel } from './pages';
 
 class App extends Component {
   constructor(props) {
@@ -19,16 +17,11 @@ class App extends Component {
       unit: [],
       lessonInfo: []
     };
-  }
 
-  getChildContext() {
-    return {
-      unit: this.state.unit,
-      lessonInfo: this.state.lessonInfo
-    };
+    this.getData = this.getData.bind(this);
   }
-
-  componentDidMount() {
+  
+  getData() {
     GetData.getUnit()
     .then(res => {
       this.setState({unit: res});
@@ -38,6 +31,18 @@ class App extends Component {
     .then(res => {
       this.setState({lessonInfo: res});
     });
+  }
+
+  getChildContext() {
+    return {
+      unit: this.state.unit,
+      lessonInfo: this.state.lessonInfo
+    };
+  }
+
+
+  componentDidMount() {
+    this.getData();
   }
 
   componentDidCatch() {

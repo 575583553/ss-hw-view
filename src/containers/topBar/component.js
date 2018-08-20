@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Text } from '../../components/text';
+import { Text } from '../../components';
 
 export class TopBar extends Component {
   render() {

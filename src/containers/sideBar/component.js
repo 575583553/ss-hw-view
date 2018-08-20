@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Text } from '../../components/text';
-import { StudentInfo } from '../../components/studentInfo';
+import {Text, StudentInfo } from '../../components';
 
 export class SideBar extends Component {
   render() {

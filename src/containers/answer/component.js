@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Stimulus } from '../../components/stimulus';
-import { Question } from '../../components/question';
+// import { Stimulus } from '../../components/stimulus';
+// import { Question } from '../../components/question';
+import { Stimulus, Question} from '../../components';
 
 export class Answer extends Component {
   render() {

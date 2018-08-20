@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Http from '../../services/http';
-import { Answer } from '../../containers/answer';
+import { Answer } from '../../containers';
 
 export class ResultPanel extends Component {
   constructor(props) {

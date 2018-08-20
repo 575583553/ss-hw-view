@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Text } from '../../components/text';
+import { Text } from '../../components';
 
 export class Unit extends Component {
   constructor(props/* , context */) {
