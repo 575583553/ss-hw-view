@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Http from '../../services/http';
-import { TopBar } from '../topBar';
-import { SideBar } from '../sideBar';
-import { Info } from '../info';
+import { TopBar } from '../../containers/topBar';
+import { SideBar } from '../../containers/sideBar';
+import { Info } from '../../containers/info';
 
 export class LessonPanel extends Component {
   constructor(props) {
@@ -13,11 +13,9 @@ export class LessonPanel extends Component {
       data: [],
       sudents: [],
     };
-    console.log(this.props.location.state);
-    console.log(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Http.get({ url: 'http://10.128.36.152:8080/lessonInfo' }).then((res) => {
       this.setState({ data: res.data });
     });
@@ -52,3 +50,8 @@ export class LessonPanel extends Component {
 LessonPanel.contextTypes = {
   lessonInfo: PropTypes.array
 };
+
+LessonPanel.propTypes = {
+  className: PropTypes.string
+};
+

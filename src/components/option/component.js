@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Stimulus } from '../stimulus';
 
 export class Option extends Component {
-  // constructor(props) {
-  //     super(props);
-  // }
-
   render() {
     const inCorrect = this.props.data.isAnswer === 'false' ? 'inCorrect' : '';
     return (
@@ -21,3 +18,8 @@ export class Option extends Component {
     );
   }
 }
+
+Option.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object
+};

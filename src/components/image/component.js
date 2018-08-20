@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Image extends Component {
   render() {
@@ -9,3 +10,8 @@ export class Image extends Component {
     );
   }
 }
+
+Image.propTypes = {
+  className: PropTypes.string,
+  url: PropTypes.string
+};

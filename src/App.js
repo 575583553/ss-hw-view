@@ -8,9 +8,9 @@ import {
 } from 'react-router-dom';
 
 import GetData from './services/getData';
-import { Unit } from './containers/unit';
-import { LessonPanel } from './containers/lessonPanel';
-import { ResultPanel } from './containers/resultPanel';
+import { Unit } from './pages/unit';
+import { LessonPanel } from './pages/lessonPanel';
+import { ResultPanel } from './pages/resultPanel';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     GetData.getUnit()
     .then(res => {
       this.setState({unit: res});
@@ -37,12 +37,10 @@ class App extends Component {
     GetData.getLesson()
     .then(res => {
       this.setState({lessonInfo: res});
-      console.log(res);
     });
   }
 
-  componentDidCatch(error) {
-    console.log(error);
+  componentDidCatch() {
   }
 
   render() {
@@ -50,7 +48,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Unit} />
-          <Route path="/lesson" component={LessonPanel} />>
+          <Route path="/lesson" component={LessonPanel} />
           <Route path="/result" component={ResultPanel} />
           {/* when router error jump to home page*/}
           <Route render={() => <Redirect to="/" />} />

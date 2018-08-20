@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Title } from '../../components/title';
+import { Text } from '../../components/text';
 
 export class Unit extends Component {
   constructor(props/* , context */) {
@@ -15,7 +15,7 @@ export class Unit extends Component {
         {unit.length > 0 && unit.map((item) => {
           return (
             <Link to={{ pathname: '/lesson', state: item.Key }} key={item.Sequence}>
-              <Title text={item.Name} />
+              <Text text={item.Name} />
             </Link>
           );
         })}
@@ -26,4 +26,8 @@ export class Unit extends Component {
 
 Unit.contextTypes = {
   unit: PropTypes.array
+};
+
+Unit.propTypes = {
+  className: PropTypes.string
 };

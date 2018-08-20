@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Title } from '../../components/title';
-import { StudentInfo } from '../studentInfo';
+import { Text } from '../../components/text';
+import { StudentInfo } from '../../components/studentInfo';
 
 export class SideBar extends Component {
   render() {
     return (
       <div className={this.props.className}>
         <div className="group-name-container">
-          <Title text="Group View" color="#fff" />
+          <Text text="Group View" color="#fff" />
         </div>
         <div className="student-container">
           {this.props.data.map((item) => {
@@ -19,3 +20,8 @@ export class SideBar extends Component {
     );
   }
 }
+
+SideBar.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.array
+};

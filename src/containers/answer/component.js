@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Stimulus } from '../stimulus';
-import { Question } from '../question';
+import { Stimulus } from '../../components/stimulus';
+import { Question } from '../../components/question';
 
 export class Answer extends Component {
-  // constructor(props) {
-  //     super(props);
-  // }
-
   render() {
     const { stimulus, options } = this.props.data;
     return (
@@ -25,3 +22,9 @@ export class Answer extends Component {
     );
   }
 }
+
+
+Answer.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object
+};

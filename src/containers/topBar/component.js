@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Title } from '../../components/title';
+import { Text } from '../../components/text';
 
 export class TopBar extends Component {
   render() {
     return (
       <div className={this.props.className}>
         <div className="unit-name-container">
-          <Title text="Unit 1" />
+          <Text text="Unit 1" />
         </div>
         <div className="lesson-name-container">
           {this.props.data.map((item) => {
             return (
-              <Title
+              <Text
                 key={item.Sequence}
                 text={`Lesson ${+item.Sequence + 1}`}
                 color="#607F8D"
@@ -24,3 +25,8 @@ export class TopBar extends Component {
     );
   }
 }
+
+TopBar.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.array
+};

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AudioService from '../../services/audioServer';
 
 export class Audio extends Component {
@@ -64,3 +65,8 @@ export class Audio extends Component {
     );
   }
 }
+
+Audio.propTypes = {
+  src: PropTypes.string,
+  className: PropTypes.string
+};

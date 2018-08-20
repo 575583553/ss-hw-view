@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Image } from '../../components/image';
-import { Title } from '../../components/title';
+import { Image } from '../image';
+import { Text } from '../text';
 
 export class StudentInfo extends Component {
     render() {
@@ -13,10 +14,15 @@ export class StudentInfo extends Component {
                         <Image url={AvatarUrl}></Image>
                     </div>
                     <div className="name-container">
-                        <Title text={Name} color='#fff'></Title>
+                        <Text text={Name} color='#fff'></Text>
                     </div>
                 </div>
             </div>
         );
     }
 }
+
+StudentInfo.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object
+};

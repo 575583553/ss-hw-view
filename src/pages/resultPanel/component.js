@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import Http from '../../serices/http';
-import { Answer } from '../answer';
+import Http from '../../services/http';
+import { Answer } from '../../containers/answer';
 
 export class ResultPanel extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ export class ResultPanel extends Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     Http.get({ url: 'http://10.128.36.152:8080/result' }).then((result) => {
       this.setState({ data: result.data });
     });
@@ -34,3 +35,8 @@ export class ResultPanel extends Component {
     );
   }
 }
+
+ResultPanel.propTypes = {
+  className: PropTypes.string
+};
+

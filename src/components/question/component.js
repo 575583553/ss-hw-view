@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Option } from '../option';
 
 export class Question extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.data);
-  }
-
   render() {
     const { title, option, studentAnswer } = this.props.data;
 
@@ -45,3 +41,8 @@ export class Question extends Component {
     );
   }
 }
+
+Question.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object
+};

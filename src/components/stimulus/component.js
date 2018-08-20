@@ -1,21 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import { Audio } from '../../components/audio';
-import { Image } from '../../components/image';
-import { Title } from '../../components/title';
+import { Audio } from '../audio';
+import { Image } from '../image';
+import { Text } from '../text';
 
 export class Stimulus extends Component {
-  // constructor(props) {
-  //     super(props);
-  // }
-
   render() {
     const { image, audio, title } = this.props.data;
     return (
       <div className={this.props.className}>
         {title && (
           <div className="title-container">
-            <Title text={title} />
+            <Text text={title} />
           </div>
         )}
         <div className="stimulus-bottom">
@@ -34,3 +31,10 @@ export class Stimulus extends Component {
     );
   }
 }
+
+Stimulus.propTypes = {
+  className: PropTypes.string,
+  data: PropTypes.object
+};
+
+
