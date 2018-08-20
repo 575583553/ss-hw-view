@@ -58,6 +58,7 @@ export class Audio extends Component {
 
   render() {
     const audioPause = this.state.status ? 'audioPause' : '';
+    
     return (
       <div className={this.props.className}>
         <div className={`audio-main ${audioPause}`} onClick={this.handelPlay} />

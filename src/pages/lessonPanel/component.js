@@ -21,6 +21,7 @@ export class LessonPanel extends Component {
   render() {
     const lessonInfo = this.context.lessonInfo;
     const state = this.props.location.state;
+
     return (
       <div className={this.props.className}>
         {lessonInfo.length > 0 && (

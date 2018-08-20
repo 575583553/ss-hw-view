@@ -7,6 +7,7 @@ import { Text } from '../../components';
 export class TopBar extends Component {
   render() {
     const {data, state} = this.props;
+    
     return (
       <div className={this.props.className}>
         <div className="unit-name-container">

@@ -5,15 +5,21 @@ import { Stimulus } from '../stimulus';
 
 export class Option extends Component {
   render() {
-    const inCorrect = this.props.data.isAnswer === 'false' ? 'inCorrect' : '';
+    const {data, showResult, num} = this.props;
+    const inCorrect = data.isAnswer === 'false' ? 'inCorrect' : '';
+    const resultText = data.isAnswer === 'true' ? 'correct' : 'incorrect';
+
     return (
       <div className={this.props.className}>
         <div className={`option ${inCorrect}`}>
           <Stimulus data={this.props.data} />
         </div>
-        {/* <div className="option-result">
-                    1 student correct
-                </div> */}
+        {
+          showResult &&
+          <div className="option-result">
+            {num} student {resultText}
+          </div>
+        }
       </div>
     );
   }
@@ -21,5 +27,7 @@ export class Option extends Component {
 
 Option.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
+  showResult: PropTypes.bool,
+  num: PropTypes.number
 };

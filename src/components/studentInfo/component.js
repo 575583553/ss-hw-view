@@ -6,6 +6,7 @@ import {Image, Text} from '../index';
 export class StudentInfo extends Component {
     render() {
         const {AvatarUrl, Name} = this.props.data;
+
         return(
             <div className={this.props.className}>
                 <div className="student-wrapper">

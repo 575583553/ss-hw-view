@@ -8,6 +8,7 @@ import { Stimulus, Question} from '../../components';
 export class Answer extends Component {
   render() {
     const { stimulus, options } = this.props.data;
+    
     return (
       <div className={this.props.className}>
         <div className="stimulus-container">

@@ -7,6 +7,7 @@ import { Text } from '../../components';
 export class Unit extends Component {
   render() {
     const unit = this.context.unit;
+
     return (
       <div className={this.props.className}>
         {unit.length > 0 && unit.map((item) => {

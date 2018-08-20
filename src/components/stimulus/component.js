@@ -9,6 +9,7 @@ import { Audio, Image, Text} from '../index';
 export class Stimulus extends Component {
   render() {
     const { image, audio, title } = this.props.data;
+
     return (
       <div className={this.props.className}>
         {title && (
