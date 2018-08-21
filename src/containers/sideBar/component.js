@@ -5,14 +5,21 @@ import {Text, StudentInfo } from '../../components';
 
 export class SideBar extends Component {
   render() {
+    const {click, studentId, data} = this.props;
+    const active = studentId === '-1' ? 'active' : '';
+
     return (
       <div className={this.props.className}>
-        <div className="group-name-container">
-          <Text text="Group View" color="#fff" />
+        <div className={`group-name-container ${active}`}
+          onClick={click.bind(this,'-1')}>
+          <Text text="Group View" color="#fff"/>
         </div>
         <div className="student-container">
-          {this.props.data.map((item) => {
-            return <StudentInfo key={item.UserId} data={item} />;
+          {data.map((item) => {
+            return <div className={`student ${studentId === item.UserId ? 'active': ''}`} key={item.UserId}
+              onClick={click.bind(this,item.UserId)}>
+              <StudentInfo data={item}/>
+            </div>;
           })}
         </div>
       </div>
@@ -22,5 +29,7 @@ export class SideBar extends Component {
 
 SideBar.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.array
+  data: PropTypes.array,
+  studentId: PropTypes.string,
+  click: PropTypes.func
 };

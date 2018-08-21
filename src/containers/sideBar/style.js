@@ -14,7 +14,9 @@ export const SideBar = styled(component)`
     > div {
       width: 100%;
       height: 70px;
-      background: #00ae9e;
     }
+  }
+  .active {
+    background: #00ae9e;
   }
 `;

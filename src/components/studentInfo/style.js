@@ -10,13 +10,14 @@ export const StudentInfo = styled(component)`
     align-items: center;
     .student-wrapper {
         display: flex;
+        width: 100%;
         height: 30px;
         padding-right: 12px;
     }
     .img-container {
         width: 30px;
         height: 30px;
-        margin-right: 10px;
+        margin: 0 10px 0 15px;
     }
     .name-container {
         font-size: 14px;

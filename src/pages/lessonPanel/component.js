@@ -19,7 +19,12 @@ export class LessonPanel extends Component {
   }
 
   render() {
-    const lessonInfo = this.context.lessonInfo;
+    const {
+      changeStudentId,
+      lessonInfo, 
+      changeLessonId,
+      currentStudentId,
+      currentLessonId }= this.context;
     const state = this.props.location.state;
 
     return (
@@ -27,14 +32,20 @@ export class LessonPanel extends Component {
         {lessonInfo.length > 0 && (
           <div className="lesson-contianer">
             <div className="topBar-container">
-              <TopBar data={lessonInfo} state={state}/>
+              <TopBar data={lessonInfo}
+              state={state}
+              click={changeLessonId}/>
             </div>
             <div className="main-container">
               <div className="sideBar-container">
-                <SideBar data={this.state.sudents} />
+                <SideBar data={this.state.sudents}
+                studentId={currentStudentId}
+                click={changeStudentId}/>
               </div>
               <div className="info-container">
-                <Info />
+                <Info studentId={currentStudentId}
+                lessonId={currentLessonId}
+                click={this.changeLessonId}/>
               </div>
             </div>
           </div>
@@ -45,7 +56,10 @@ export class LessonPanel extends Component {
 }
 
 LessonPanel.contextTypes = {
-  lessonInfo: PropTypes.array
+  lessonInfo: PropTypes.array,
+  currentStudentId: PropTypes.string,
+  changeStudentId: PropTypes.func,
+  changeLessonId: PropTypes.func
 };
 
 LessonPanel.propTypes = {

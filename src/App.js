@@ -16,32 +16,50 @@ class App extends Component {
     this.state = {
       unit: [],
       lessonInfo: [],
-      studentsAnswer: []
+      studentsAnswer: [],
+      currentUnitId: '',
+      currentStudentId: '',
+      currentLessonId: ''
     };
 
     this.getData = this.getData.bind(this);
+    this.changeStudentId = this.changeStudentId.bind(this);
+    this.changeLessonId = this.changeLessonId.bind(this);
+    this.changeUnitId = this.changeUnitId.bind(this);
   }
-  
+
+  changeStudentId(id) {
+    this.setState({currentStudentId: id});
+  }
+
+  changeLessonId(id) {
+    this.setState({currentLessonId: id});
+  }
+
+  changeUnitId(id) {
+    this.setState({currentUnitId: id});
+  }
+
   getData() {
     GetData.getUnit().then(res => {
-      this.setState({unit: res});
+      this.setState({unit: res, currentUnitId: res[0].Key});
     });
 
     GetData.getLesson().then(res => {
-      this.setState({lessonInfo: res});
+      this.setState({lessonInfo: res, currentLessonId: res[0].Key});
     });
 
     GetData.getStudentAnswer().then(res => {
-      this.setState({studentsAnswer: res});
+      this.setState({studentsAnswer: res, currentStudentId: res[0].studentId});
     });
   }
 
   getChildContext() {
     return {
-      unit: this.state.unit,
-      lessonInfo: this.state.lessonInfo,
-      studentsAnswer: this.state.studentsAnswer
-    };
+    ...this.state,
+    changeStudentId: this.changeStudentId,
+    changeLessonId: this.changeLessonId,
+    changeUnitId: this.changeUnitId};
   }
 
 
@@ -73,7 +91,13 @@ class App extends Component {
 App.childContextTypes = {
   unit: PropTypes.array,
   lessonInfo: PropTypes.array,
-  studentsAnswer: PropTypes.array
+  studentsAnswer: PropTypes.array,
+  currentUnitId: PropTypes.string,
+  currentStudentId: PropTypes.string,
+  currentLessonId: PropTypes.string,
+  changeStudentId: PropTypes.func,
+  changeLessonId: PropTypes.func,
+  changeUnitId: PropTypes.func
 };
 
 export default App;
