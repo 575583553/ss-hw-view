@@ -4,6 +4,7 @@ export { Image } from './image';
 export { Option } from './option';
 export { Panel } from './panel';
 export { Question } from './question';
+export { QuestionBar } from './questionBar';
 export { Stimulus } from './stimulus';
 export { StudentInfo } from './studentInfo';
 export { Text } from './text';

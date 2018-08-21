@@ -25,7 +25,6 @@ class App extends Component {
     this.getData = this.getData.bind(this);
     this.changeStudentId = this.changeStudentId.bind(this);
     this.changeLessonId = this.changeLessonId.bind(this);
-    this.changeUnitId = this.changeUnitId.bind(this);
   }
 
   changeStudentId(id) {
@@ -34,10 +33,6 @@ class App extends Component {
 
   changeLessonId(id) {
     this.setState({currentLessonId: id});
-  }
-
-  changeUnitId(id) {
-    this.setState({currentUnitId: id});
   }
 
   getData() {
@@ -58,8 +53,7 @@ class App extends Component {
     return {
     ...this.state,
     changeStudentId: this.changeStudentId,
-    changeLessonId: this.changeLessonId,
-    changeUnitId: this.changeUnitId};
+    changeLessonId: this.changeLessonId};
   }
 
 
@@ -96,8 +90,7 @@ App.childContextTypes = {
   currentStudentId: PropTypes.string,
   currentLessonId: PropTypes.string,
   changeStudentId: PropTypes.func,
-  changeLessonId: PropTypes.func,
-  changeUnitId: PropTypes.func
+  changeLessonId: PropTypes.func
 };
 
 export default App;

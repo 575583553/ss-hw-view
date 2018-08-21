@@ -6,13 +6,14 @@ import { Text } from '../../components';
 
 export class Unit extends Component {
   render() {
-    const unit = this.context.unit;
+    const {unit, changeUnitId} = this.context;
 
     return (
       <div className={this.props.className}>
         {unit.length > 0 && unit.map((item) => {
           return (
             <Link
+              onClick={changeUnitId.bind(this, item.Key)}
               to={{
                 pathname: '/lesson',
                 state: {
@@ -20,7 +21,7 @@ export class Unit extends Component {
                   name: item.Name
                 }}}
               key={item.Sequence}>
-              <Text text={item.Name} />
+              <Text text={item.Name}/>
             </Link>
           );
         })}
@@ -30,7 +31,8 @@ export class Unit extends Component {
 }
 
 Unit.contextTypes = {
-  unit: PropTypes.array
+  unit: PropTypes.array,
+  changeUnitId: PropTypes.func
 };
 
 Unit.propTypes = {

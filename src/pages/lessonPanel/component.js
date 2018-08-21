@@ -21,7 +21,7 @@ export class LessonPanel extends Component {
   render() {
     const {
       changeStudentId,
-      lessonInfo, 
+      lessonInfo,
       changeLessonId,
       currentStudentId,
       currentLessonId }= this.context;
@@ -43,8 +43,10 @@ export class LessonPanel extends Component {
                 click={changeStudentId}/>
               </div>
               <div className="info-container">
-                <Info studentId={currentStudentId}
+                <Info data={lessonInfo}
+                studentId={currentStudentId}
                 lessonId={currentLessonId}
+                currentUnitId={state.key}
                 click={this.changeLessonId}/>
               </div>
             </div>

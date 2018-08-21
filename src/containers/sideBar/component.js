@@ -16,7 +16,8 @@ export class SideBar extends Component {
         </div>
         <div className="student-container">
           {data.map((item) => {
-            return <div className={`student ${studentId === item.UserId ? 'active': ''}`} key={item.UserId}
+            return <div key={item.UserId}
+              className={`student ${studentId === item.UserId ? 'active': ''}`}
               onClick={click.bind(this,item.UserId)}>
               <StudentInfo data={item}/>
             </div>;

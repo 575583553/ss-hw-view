@@ -23,6 +23,8 @@ export const LessonPanel = styled(component)`
         background: #3A4E5F;
     }
     .info-container {
-        flex; 1;
+        flex: 1;
+        padding: 28px 45px;
+        /* background: #F0F7F9; */
     }
 `;
