@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {Image, Text} from '../index';
+import { Arrow } from '../arrow';
 
 export class StudentInfo extends Component {
-    render() {
-        const {AvatarUrl, Name} = this.props.data;
+  render() {
+    const {data, idx, studentId} = this.props;
 
-        return(
-            <div className={this.props.className}>
-                <div className="student-wrapper">
-                    <div className="img-container">
-                        <Image url={AvatarUrl}></Image>
-                    </div>
-                    <div className="name-container">
-                        <Text text={Name} color='#fff'></Text>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    return (
+      <div className={this.props.className}>
+        <div className="question-name">
+          Question <span>{idx + 1}</span>
+        </div>
+        {
+          data.studentsAnswer.map((item) => {
+            if(item.studentId === studentId) {
+              return <div className="result-container" key={item.studentId}>
+                Score: <span
+                className={item.score === item.TotalScore ? 'correct' : ''}>
+                {item.score} / {item.TotalScore}</span>
+              </div>;
+            }
+          })
+        }
+        <div className="arrow">
+          <Arrow></Arrow>
+        </div>
+      </div>
+    );
+  }
 }
 
 StudentInfo.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
+  studentId: PropTypes.string,
+  idx: PropTypes.number
 };

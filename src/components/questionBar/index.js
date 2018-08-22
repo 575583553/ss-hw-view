@@ -1,1 +1,0 @@
-export { QuestionBar } from './style';

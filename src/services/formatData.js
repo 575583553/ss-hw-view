@@ -87,12 +87,16 @@ class FormatData {
             const _question = belongActivity.questions.filter(
               ques => questionKey === ques.questionKey
             )[0];
+
             _question.totalNum++;
             if (answer.Score === answer.TotalScore) {
               _question.correctNum++;
             }
             _question.studentsAnswer.push({
-              [question.StudentId]: answer.Detail.studentAnswers
+              ...answer.Detail.studentAnswers,
+              studentId: question.StudentId,
+              score: answer.Score,
+              TotalScore: answer.TotalScore
             });
           });
         });

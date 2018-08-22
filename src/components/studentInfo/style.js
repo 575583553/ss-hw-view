@@ -3,23 +3,30 @@ import styled from 'styled-components';
 import { StudentInfo as component } from './component';
 
 export const StudentInfo = styled(component)`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .student-wrapper {
-        display: flex;
-        width: 100%;
-        height: 30px;
-        padding-right: 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  }
+  .question-name {
+    span {
+      margin-right: 20px;
     }
-    .img-container {
-        width: 30px;
-        height: 30px;
-        margin: 0 10px 0 15px;
+  }
+  .result-container {
+    >span{
+      font-size: 12px;
+      color: #F5A623;
     }
-    .name-container {
-        font-size: 14px;
-    }
+  }
+  .arrow {
+    position: absolute;
+    right: 8px;
+    width: 11px;
+    height: 15px;
+  }
+  span.correct {
+    color: #38AF9E;
+  }
 `;

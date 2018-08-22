@@ -13,9 +13,9 @@ export const Activity = styled(component)`
     text-align: center;
   }
   .question {
-    height: 46px;
+    height: ${props => props.studentId === '-1' ? '80px' : '48px'};
     background: #F8F9FC;
-    padding-left: 16px;
+    padding-left: 24px;
     border-top: 5px solid #fff;
     box-shadow: inset 0 1px 0 0 rgba(90, 127, 141, 0.4),inset 0 -1px 0 0 rgba(90, 127, 141, 0.4);
     font-size: 14px;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import {Text, StudentInfo } from '../../components';
+import {Text, StudentItem } from '../../components';
 
 export class SideBar extends Component {
   render() {
@@ -19,7 +19,7 @@ export class SideBar extends Component {
             return <div key={item.UserId}
               className={`student ${studentId === item.UserId ? 'active': ''}`}
               onClick={click.bind(this,item.UserId)}>
-              <StudentInfo data={item}/>
+              <StudentItem data={item}/>
             </div>;
           })}
         </div>
