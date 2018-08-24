@@ -15,7 +15,8 @@ export class StudentInfo extends Component {
         {
           data.studentsAnswer.map((item) => {
             if(item.studentId === studentId) {
-              return <div className="result-container" key={item.studentId}>
+              return <div
+                className="result-container" key={item.studentId}>
                 Score: <span
                 className={item.score === item.TotalScore ? 'correct' : ''}>
                 {item.score} / {item.TotalScore}</span>

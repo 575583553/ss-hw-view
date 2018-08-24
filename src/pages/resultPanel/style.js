@@ -13,7 +13,7 @@ export const ResultPanel = styled(component)`
     border-bottom: 1px solid #ccc;
   }
   .student-container {
-    height: 200px;
+    height: 110px;
     border-bottom: 1px solid #ccc;
   }
 `;

@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-// import { Stimulus } from '../../components/stimulus';
-// import { Question } from '../../components/question';
 import { Stimulus, Question} from '../../components';
 
 export class Answer extends Component {
   render() {
     const { stimulus, options } = this.props.data;
-    
+
     return (
       <div className={this.props.className}>
         <div className="stimulus-container">

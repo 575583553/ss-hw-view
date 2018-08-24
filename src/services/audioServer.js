@@ -27,16 +27,7 @@ class AudioService {
     if (idx >= 0) {
       this.playList.splice(idx, 1);
     }
-  }
-
-  stopAnother(audio) {
-    this.playList.forEach((howl) => {
-      if (howl === audio) {
-        howl.pause();
-      } else {
-        howl.stop();
-      }
-    });
+    howl.unload();
   }
 
   stopAll(audio) {
@@ -55,7 +46,9 @@ class AudioService {
   }
 
   destroy() {
-    this.stopAll();
+    this.playList.forEach((howl) => {
+      howl.unload();
+    });
     this.playList = [];
   }
 }

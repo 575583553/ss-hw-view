@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { StudentInfo, GroupInfo } from '../index';
 
 export class Activity extends Component {
   render() {
     const {data, idx, studentId} = this.props;
+    const location = {
+      pathname: '/result',
+      state: { studentId: studentId}
+    };
 
     return(
       <div className={this.props.className}>
@@ -15,7 +20,7 @@ export class Activity extends Component {
         <div className="questions-container">
         {
           data.questions.map((item, index) => {
-            return <div className="question" key={index}>
+            return <Link to={location} className="question" key={index}>
               {studentId !== '-1' ?
               <StudentInfo data={item}
               idx={index}
@@ -23,7 +28,7 @@ export class Activity extends Component {
               :
               <GroupInfo data={item}
               idx={index}/>}
-            </div>;
+            </Link>;
           })
         }
         </div>

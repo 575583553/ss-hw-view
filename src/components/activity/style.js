@@ -13,6 +13,7 @@ export const Activity = styled(component)`
     text-align: center;
   }
   .question {
+    display: block;
     height: ${props => props.studentId === '-1' ? '80px' : '48px'};
     background: #F8F9FC;
     padding-left: 24px;
