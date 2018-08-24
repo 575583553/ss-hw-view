@@ -3,10 +3,25 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { Text } from '../../components';
+import { GetData } from '../../services';
 
 export class Unit extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      unit: []
+    };
+  }
+
+  componentDidMount() {
+    GetData.getUnit().then(res => {
+      this.setState({unit: res});
+    });
+  }
+
   render() {
-    const {unit} = this.context;
+    const {unit} = this.state;
 
     return (
       <div className={this.props.className}>
@@ -28,10 +43,6 @@ export class Unit extends Component {
     );
   }
 }
-
-Unit.contextTypes = {
-  unit: PropTypes.array
-};
 
 Unit.propTypes = {
   className: PropTypes.string

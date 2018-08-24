@@ -10,13 +10,15 @@ export class SideBar extends Component {
 
     return (
       <div className={this.props.className}>
-        <div className={`group-name-container ${active}`}
+        <div
+          className={`group-name-container ${active}`}
           onClick={click.bind(this,'-1')}>
           <Text text="Group View" color="#fff"/>
         </div>
         <div className="student-container">
           {data.map((item) => {
-            return <div key={item.UserId}
+            return <div
+              key={item.UserId}
               className={`student ${studentId === item.UserId ? 'active': ''}`}
               onClick={click.bind(this,item.UserId)}>
               <StudentItem data={item}/>

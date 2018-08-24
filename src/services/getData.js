@@ -1,7 +1,7 @@
 import Http from './http';
 import FormatData from './formatData';
 import config from '../config/config';
-const { bookUrl, answewrUrl /* , resource */ } = config;
+const { bookUrl, answewrUrl, sudentInfo /* , resource */ } = config;
 
 class GetData {
   getBookInfo() {
@@ -10,6 +10,10 @@ class GetData {
 
   getAnswerInfo() {
     return Http.get({ url: answewrUrl });
+  }
+
+  getStudentInfo() {
+    return Http.get({ url: sudentInfo});
   }
 
   getUnit() {
