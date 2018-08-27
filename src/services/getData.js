@@ -1,7 +1,7 @@
 import Http from './http';
 import FormatData from './formatData';
 import config from '../config/config';
-const { bookUrl, answewrUrl, sudentInfo /* , resource */ } = config;
+const { bookUrl, answewrUrl, sudentInfo, activityInfo /* , resource */ } = config;
 
 class GetData {
   getBookInfo() {
@@ -23,11 +23,17 @@ class GetData {
     });
   }
 
+  getActivityInfo() {
+    return Http.get({ url: activityInfo});
+  }
+
   getLesson() {
     return this.getAnswerInfo().then((answer) => {
       return this.getBookInfo().then((book) => {
-        const lessonInfo = FormatData.parserLesson(book.data, answer.data);
-        return lessonInfo;
+        return this.getActivityInfo().then((activity) => {
+          const lessonInfo = FormatData.parserLesson(book.data, answer.data, activity.data);
+          return lessonInfo;
+        });
       });
     });
   }

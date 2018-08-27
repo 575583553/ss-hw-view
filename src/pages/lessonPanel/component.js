@@ -42,7 +42,6 @@ export class LessonPanel extends Component {
       lessonInfo,
       currentStudentId,
       currentLessonId }= this.state;
-
       const state = this.props.location.state;
 
     return (

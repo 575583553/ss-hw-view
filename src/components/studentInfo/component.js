@@ -6,14 +6,14 @@ import { Arrow } from '../arrow';
 export class StudentInfo extends Component {
   render() {
     const {data, idx, studentId} = this.props;
-
+    console.log(data);
     return (
       <div className={this.props.className}>
         <div className="question-name">
           Question <span>{idx + 1}</span>
         </div>
         {
-          data.studentsAnswer.map((item) => {
+          data.studentsAnswer ? data.studentsAnswer.map((item) => {
             if(item.studentId === studentId) {
               return <div
                 className="result-container" key={item.studentId}>
@@ -22,7 +22,12 @@ export class StudentInfo extends Component {
                 {item.score} / {item.TotalScore}</span>
               </div>;
             }
-          })
+          }) :
+          <div
+            className="result-container">
+            Score: <span>
+            {data.score} / {data.TotalScore}</span>
+          </div>
         }
         <div className="arrow">
           <Arrow></Arrow>

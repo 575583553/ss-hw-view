@@ -8,4 +8,6 @@ export const Text = styled(component)`
   justify-content: center;
   align-items: center;
   color: ${(props) => (props.color ? props.color : '#666')};
+  font-style: ${(props) => props.italic ? 'italic' : 'normal'};
+  font-weight: ${(props) => props.bold ? 'bold' : 'normal'};
 `;
