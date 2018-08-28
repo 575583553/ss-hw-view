@@ -5,6 +5,7 @@ import { Activity as component } from './component';
 export const Activity = styled(component)`
   width: 100%;
   color: #5B5B5B;
+  margin-bottom: 20px;
   >.title-container {
     background: #fff;
     height: 50px;

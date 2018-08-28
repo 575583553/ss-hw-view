@@ -89,7 +89,6 @@ class FormatData {
         });
         // generate question level model
         questionInfo.forEach(question => {
-          // console.log('123',question)
           let belongActivity;
           result.some((lesson, lIdx) =>
             lesson.activitys.some((activity, aIdx) => {
@@ -132,6 +131,8 @@ class FormatData {
               score: answer.Score,
               TotalScore: answer.TotalScore
             });
+
+            console.log(belongActivity)
           });
         });
         return result;
