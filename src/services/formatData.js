@@ -104,12 +104,9 @@ class FormatData {
       // loop answers
       question.Answers.forEach((answer) => {
         const questionKey = answer.QuestionKey;
-        let _question;
-        belongActivity.questions.some((ques, qIdx) => {
-          const match = questionKey === ques.questionKey;
-          if (match) _question = belongActivity.questions[qIdx];
-          return match;
-        });
+        let _question = belongActivity.questions.filter(
+          (ques) => questionKey === ques.questionKey
+        )[0];
 
         if (!_question) return;
 
@@ -130,7 +127,6 @@ class FormatData {
           score: answer.Score,
           TotalScore: answer.TotalScore,
         });
-
         console.log(belongActivity);
       });
     });

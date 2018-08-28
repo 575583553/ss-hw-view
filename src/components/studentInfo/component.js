@@ -6,7 +6,7 @@ import { Arrow } from '../arrow';
 export class StudentInfo extends Component {
   render() {
     const { data, idx, studentId } = this.props;
-    console.log(data.studentsAnswer);
+    // console.log(data.studentsAnswer);
     return (
       <div className={this.props.className}>
         <div className="question-name">
