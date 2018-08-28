@@ -104,29 +104,33 @@ class FormatData {
       // loop answers
       question.Answers.forEach((answer) => {
         const questionKey = answer.QuestionKey;
-        let _question = belongActivity.questions.filter(
-          (ques) => questionKey === ques.questionKey
-        )[0];
 
-        if (!_question) return;
+        belongActivity.questions.some((ques, qIdx) => {
+          const matched = questionKey === ques.questionKey;
+          if (matched) {
+            ques = {
+              ...ques,
+              correctNum: 0,
+              totalNum: 0,
+              studentsAnswer: [],
+            };
 
-        _question = {
-          ..._question,
-          correctNum: 0,
-          totalNum: 0,
-          studentsAnswer: [],
-        };
+            ques.totalNum++;
+            if (answer.Score === answer.TotalScore) {
+              ques.correctNum++;
+            }
 
-        _question.totalNum++;
-        if (answer.Score === answer.TotalScore) {
-          _question.correctNum++;
-        }
+            ques.studentsAnswer.push({
+              studentId: question.StudentId,
+              score: answer.Score,
+              TotalScore: answer.TotalScore,
+            });
 
-        _question.studentsAnswer.push({
-          studentId: question.StudentId,
-          score: answer.Score,
-          TotalScore: answer.TotalScore,
+            belongActivity.questions[qIdx] = ques;
+          }
+          return matched;
         });
+
         console.log(belongActivity);
       });
     });
