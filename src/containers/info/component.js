@@ -5,22 +5,22 @@ import { Panel } from '../../components';
 
 export class Info extends Component {
   render() {
-    const {data, studentId, lessonId, click, currentUnitId} = this.props;
+    const { data, studentId, lessonId, click, currentUnitId } = this.props;
 
-    return(
+    return (
       <div className={this.props.className}>
-        {
-          data.map((item) => {
-            if(item.ParentNodeKey === currentUnitId) {
-              return <Panel
-              data={item}
-              key={item.Sequence}
-              studentId={studentId}
-              lessonId={lessonId}
-              click={click} />;
-            }
-          })
-        }
+        {data.map(
+          (item) =>
+            item.ParentNodeKey === currentUnitId && (
+              <Panel
+                data={item}
+                key={item.Sequence}
+                studentId={studentId}
+                lessonId={lessonId}
+                click={click}
+              />
+            ),
+        )}
       </div>
     );
   }
@@ -32,5 +32,5 @@ Info.propTypes = {
   studentId: PropTypes.string,
   lessonId: PropTypes.string,
   currentUnitId: PropTypes.string,
-  click: PropTypes.func
+  click: PropTypes.func,
 };
