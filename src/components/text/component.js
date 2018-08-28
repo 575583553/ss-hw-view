@@ -9,5 +9,5 @@ export class Text extends Component {
 
 Text.propTypes = {
   className: PropTypes.string,
-  text: PropTypes.string
+  text: PropTypes.string,
 };

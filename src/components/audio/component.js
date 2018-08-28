@@ -69,5 +69,5 @@ export class Audio extends Component {
 
 Audio.propTypes = {
   src: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
 };

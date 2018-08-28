@@ -34,8 +34,7 @@ class AudioService {
     this.playList.forEach((howl) => {
       if (audio && howl === audio) {
         howl.pause();
-      }
-      else {
+      } else {
         howl.stop();
       }
     });

@@ -10,40 +10,43 @@ export class Unit extends Component {
     super();
 
     this.state = {
-      unit: []
+      unit: [],
     };
   }
 
   componentDidMount() {
-    GetData.getUnit().then(res => {
-      this.setState({unit: res});
+    GetData.getUnit().then((res) => {
+      this.setState({ unit: res });
     });
   }
 
   render() {
-    const {unit} = this.state;
+    const { unit } = this.state;
 
     return (
       <div className={this.props.className}>
-        {unit.length > 0 && unit.map((item) => {
-          return (
-            <Link
-              to={{
-                pathname: '/lesson',
-                state: {
-                  key: item.Key,
-                  name: item.Name
-                }}}
-              key={item.Sequence}>
-              <Text text={item.Name}/>
-            </Link>
-          );
-        })}
+        {unit.length > 0 &&
+          unit.map((item) => {
+            return (
+              <Link
+                to={{
+                  pathname: '/lesson',
+                  state: {
+                    key: item.Key,
+                    name: item.Name,
+                  },
+                }}
+                key={item.Sequence}
+              >
+                <Text text={item.Name} />
+              </Link>
+            );
+          })}
       </div>
     );
   }
 }
 
 Unit.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };

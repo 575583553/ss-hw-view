@@ -1,7 +1,12 @@
 import Http from './http';
 import FormatData from './formatData';
 import config from '../config/config';
-const { bookUrl, answewrUrl, sudentInfo, activityInfo /* , resource */ } = config;
+const {
+  bookUrl,
+  answewrUrl,
+  sudentInfo,
+  activityInfo /* , resource */,
+} = config;
 
 class GetData {
   getBookInfo() {
@@ -13,7 +18,7 @@ class GetData {
   }
 
   getStudentInfo() {
-    return Http.get({ url: sudentInfo});
+    return Http.get({ url: sudentInfo });
   }
 
   getUnit() {
@@ -24,14 +29,18 @@ class GetData {
   }
 
   getActivityInfo() {
-    return Http.get({ url: activityInfo});
+    return Http.get({ url: activityInfo });
   }
 
   getLesson() {
     return this.getAnswerInfo().then((answer) => {
       return this.getBookInfo().then((book) => {
         return this.getActivityInfo().then((activity) => {
-          const lessonInfo = FormatData.parserLesson(book.data, answer.data, activity.data);
+          const lessonInfo = FormatData.parserLesson(
+            book.data,
+            answer.data,
+            activity.data,
+          );
           return lessonInfo;
         });
       });
@@ -39,7 +48,7 @@ class GetData {
   }
 
   getStudentAnswer() {
-    return this.getAnswerInfo().then(res => {
+    return this.getAnswerInfo().then((res) => {
       return FormatData.parserAnswer(res.data);
     });
   }

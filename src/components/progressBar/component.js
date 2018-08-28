@@ -2,22 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class ProgressBar extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state ={
-      ready: false
+    this.state = {
+      ready: false,
     };
 
     setTimeout(() => {
-      this.setState({ready: true});
+      this.setState({ ready: true });
     });
   }
 
   render() {
     return (
       <div className={this.props.className}>
-        <div className={`progress-bar ${this.state.ready && 'in'}`}></div>
+        <div className={`progress-bar ${this.state.ready && 'in'}`} />
       </div>
     );
   }
@@ -25,5 +24,5 @@ export class ProgressBar extends Component {
 
 ProgressBar.propTypes = {
   className: PropTypes.string,
-  progress: PropTypes.number
+  progress: PropTypes.number,
 };

@@ -44,5 +44,5 @@ export class Question extends Component {
 
 Question.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
 };

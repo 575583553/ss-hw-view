@@ -37,6 +37,5 @@ export class ResultPanel extends Component {
 }
 
 ResultPanel.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
 };
-

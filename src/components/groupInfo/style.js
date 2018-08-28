@@ -17,7 +17,7 @@ export const GroupInfo = styled(component)`
     padding: 10px 0;
   }
   .result-info {
-    >span {
+    > span {
       font-size: 14px;
       margin-right: 8px;
     }

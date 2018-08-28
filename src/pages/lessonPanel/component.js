@@ -11,7 +11,7 @@ export class LessonPanel extends Component {
       sudents: [],
       lessonInfo: [],
       currentStudentId: '',
-      currentLessonId: ''
+      currentLessonId: '',
     };
 
     this.changeStudentId = this.changeStudentId.bind(this);
@@ -19,20 +19,23 @@ export class LessonPanel extends Component {
   }
 
   changeStudentId(id) {
-    this.setState({currentStudentId: id});
+    this.setState({ currentStudentId: id });
   }
 
   changeLessonId(id) {
-    this.setState({currentLessonId: id});
+    this.setState({ currentLessonId: id });
   }
 
   componentDidMount() {
-    GetData.getStudentInfo().then(res => {
-      this.setState({sudents: res.data, currentStudentId: res.data[0].UserId});
+    GetData.getStudentInfo().then((res) => {
+      this.setState({
+        sudents: res.data,
+        currentStudentId: res.data[0].UserId,
+      });
     });
 
-    GetData.getLesson().then(res => {
-      this.setState({lessonInfo: res, currentLessonId: res[0].Key});
+    GetData.getLesson().then((res) => {
+      this.setState({ lessonInfo: res, currentLessonId: res[0].Key });
     });
   }
 
@@ -41,8 +44,9 @@ export class LessonPanel extends Component {
       sudents,
       lessonInfo,
       currentStudentId,
-      currentLessonId }= this.state;
-      const state = this.props.location.state;
+      currentLessonId,
+    } = this.state;
+    const state = this.props.location.state;
 
     return (
       <div className={this.props.className}>
@@ -50,24 +54,27 @@ export class LessonPanel extends Component {
           <div className="lesson-contianer">
             <div className="topBar-container">
               <TopBar
-              data={lessonInfo}
-              state={state}
-              click={this.changeLessonId}/>
+                data={lessonInfo}
+                state={state}
+                click={this.changeLessonId}
+              />
             </div>
             <div className="main-container">
               <div className="sideBar-container">
                 <SideBar
-                data={sudents}
-                studentId={currentStudentId}
-                click={this.changeStudentId}/>
+                  data={sudents}
+                  studentId={currentStudentId}
+                  click={this.changeStudentId}
+                />
               </div>
               <div className="info-container">
                 <Info
-                data={lessonInfo}
-                studentId={currentStudentId}
-                lessonId={currentLessonId}
-                currentUnitId={state.key}
-                click={this.changeLessonId}/>
+                  data={lessonInfo}
+                  studentId={currentStudentId}
+                  lessonId={currentLessonId}
+                  currentUnitId={state.key}
+                  click={this.changeLessonId}
+                />
               </div>
             </div>
           </div>
@@ -79,6 +86,5 @@ export class LessonPanel extends Component {
 
 LessonPanel.propTypes = {
   className: PropTypes.string,
-  location: PropTypes.object
+  location: PropTypes.object,
 };
-

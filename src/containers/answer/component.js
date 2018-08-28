@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Stimulus, Question} from '../../components';
+import { Stimulus, Question } from '../../components';
 
 export class Answer extends Component {
   render() {
@@ -23,8 +23,7 @@ export class Answer extends Component {
   }
 }
 
-
 Answer.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
 };

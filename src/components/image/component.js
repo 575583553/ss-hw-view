@@ -13,5 +13,5 @@ export class Image extends Component {
 
 Image.propTypes = {
   className: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
 };

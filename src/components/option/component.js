@@ -5,7 +5,7 @@ import { Stimulus } from '../stimulus';
 
 export class Option extends Component {
   render() {
-    const {data, showResult, num} = this.props;
+    const { data, showResult, num } = this.props;
     const inCorrect = data.isAnswer === 'false' ? 'inCorrect' : '';
     const resultText = data.isAnswer === 'true' ? 'correct' : 'incorrect';
 
@@ -14,12 +14,11 @@ export class Option extends Component {
         <div className={`option ${inCorrect}`}>
           <Stimulus data={this.props.data} />
         </div>
-        {
-          showResult &&
+        {showResult && (
           <div className="option-result">
             {num} student {resultText}
           </div>
-        }
+        )}
       </div>
     );
   }
@@ -29,5 +28,5 @@ Option.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object,
   showResult: PropTypes.bool,
-  num: PropTypes.number
+  num: PropTypes.number,
 };

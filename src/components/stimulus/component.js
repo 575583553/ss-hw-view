@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Audio, Image, Text} from '../index';
+import { Audio, Image, Text } from '../index';
 
 export class Stimulus extends Component {
   render() {
@@ -33,7 +33,5 @@ export class Stimulus extends Component {
 
 Stimulus.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object
+  data: PropTypes.object,
 };
-
-

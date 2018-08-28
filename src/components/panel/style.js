@@ -8,10 +8,10 @@ export const Panel = styled(component)`
   min-height: 100px;
   box-shadow: 0px 2px 4px 0px rgba(57, 77, 95, 0.3);
   background: rgba(230, 235, 237, 0.3);
-  >.title-container {
-    background: #E6EBED;
+  > .title-container {
+    background: #e6ebed;
     font-size: 18px;
-    color: #9B9B9B;
+    color: #9b9b9b;
     line-height: 60px;
     padding-left: 60px;
     border-bottom: 1px solid rgba(90, 127, 141, 0.4);

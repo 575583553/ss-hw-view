@@ -13,7 +13,7 @@ export const Arrow = styled(component)`
     top: 3px;
     width: 11px;
     height: 3px;
-    background: #D2D2D2;
+    background: #d2d2d2;
     transform: rotate(45deg);
   }
   &:after {
@@ -23,7 +23,7 @@ export const Arrow = styled(component)`
     bottom: 3px;
     width: 11px;
     height: 3px;
-    background: #D2D2D2;
+    background: #d2d2d2;
     transform: rotate(-45deg);
   }
 `;
