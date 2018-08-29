@@ -47,9 +47,18 @@ class GetData {
     });
   }
 
-  getStudentAnswer() {
-    return this.getAnswerInfo().then((res) => {
-      return FormatData.parserAnswer(res.data);
+  getResult() {
+    return this.getAnswerInfo().then((answer) => {
+      return this.getBookInfo().then((book) => {
+        return this.getActivityInfo().then((activity) => {
+          const resultInfo = FormatData.parserResult(
+            book.data,
+            answer.data,
+            activity.data,
+          );
+          return resultInfo;
+        });
+      });
     });
   }
 }

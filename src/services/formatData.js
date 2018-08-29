@@ -137,29 +137,7 @@ class FormatData {
     return result;
   }
 
-  parserAnswer(info) {
-    const result = [];
-    const studentsId = this.setArray(info);
-
-    studentsId.forEach((id) => {
-      result.push({
-        studentId: id,
-        activitys: [],
-      });
-    });
-
-    info.forEach((answer) => {
-      let belongStudent;
-      result.some((item, index) => {
-        const match = item.studentId === answer.StudentId;
-        if (match) belongStudent = result[index];
-        return match;
-      });
-      belongStudent.activitys.push(answer);
-    });
-
-    return result;
-  }
+  parserResult(/* info, answer, activitys */) {}
 }
 
 export default new FormatData();

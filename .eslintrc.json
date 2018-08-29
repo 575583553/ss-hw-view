@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "globals": {
     "React": true
@@ -20,5 +21,13 @@
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "no-console": "off"
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "16.4.2"
+    },
+    "propWrapperFunctions": ["forbidExtraProps"]
   }
 }

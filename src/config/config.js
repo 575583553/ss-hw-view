@@ -1,8 +1,8 @@
 const config = {
-  bookUrl: 'http://10.128.36.152:8080/ssiBookInfo',
-  answewrUrl: 'http://10.128.36.152:8080/ssiAnswer',
-  sudentInfo: 'http://10.128.36.152:8080/studentsInfo',
-  activityInfo: 'http://10.128.36.152:8080/ssiActivity',
+  bookUrl: 'http://localhost:8088/ssiBookInfo',
+  answewrUrl: 'http://localhost:8088/ssiAnswer',
+  sudentInfo: 'http://localhost:8088/studentsInfo',
+  activityInfo: 'http://localhost:8088/ssiActivity',
   resource: 'https://e1svc.ef.cn/resource/',
 };
 

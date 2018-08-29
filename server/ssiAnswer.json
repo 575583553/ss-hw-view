@@ -1,0 +1,514 @@
+[
+  {
+    "GroupId": "370566",
+    "ActivityCourseKey": "7c66a20b-498e-e811-814a-02bc62143fc0",
+    "StudentId": "12226010",
+    "ActivityKey": "7b66a20b-498e-e811-814a-02bc62143fc0",
+    "Answers": [
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            },
+            {
+              "test": "1",
+              "option": "1"
+            },
+            {
+              "test": "2",
+              "option": "2"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "1",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              },
+              {
+                "test": "2",
+                "option": "1"
+              },
+              {
+                "test": "2",
+                "option": "2"
+              },
+              {
+                "test": "1",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "2",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              },
+              {
+                "test": "1",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 3,
+        "Duration": 507,
+        "QuestionKey": "7a66a20b-498e-e811-814a-02bc62143fc0",
+        "Score": 3,
+        "LocalStartStamp": "2018-07-24T08:28:29.384Z",
+        "LocalEndStamp": "2018-07-24T08:28:39.651Z",
+        "TotalScore": 3,
+        "Star": 1
+      }
+    ]
+  },
+  {
+    "GroupId": "370566",
+    "ActivityCourseKey": "43150d12-498e-e811-814a-02bc62143fc0",
+    "StudentId": "12226010",
+    "ActivityKey": "42150d12-498e-e811-814a-02bc62143fc0",
+    "Answers": [
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "1"
+              },
+              {
+                "test": "0",
+                "option": "2"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "2"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 344,
+        "QuestionKey": "3d150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:31.039Z",
+        "LocalEndStamp": "2018-07-24T08:30:36.881Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 153,
+        "QuestionKey": "3e150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 1,
+        "LocalStartStamp": "2018-07-24T08:30:37.409Z",
+        "LocalEndStamp": "2018-07-24T08:30:39.952Z",
+        "TotalScore": 1,
+        "Star": 1
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 481,
+        "QuestionKey": "3f150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:40.480Z",
+        "LocalEndStamp": "2018-07-24T08:30:48.488Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 491,
+        "QuestionKey": "40150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0.5,
+        "LocalStartStamp": "2018-07-24T08:30:49.015Z",
+        "LocalEndStamp": "2018-07-24T08:30:57.188Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 440,
+        "QuestionKey": "41150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:57.722Z",
+        "LocalEndStamp": "2018-07-24T08:31:05.055Z",
+        "TotalScore": 1,
+        "Star": 0
+      }
+    ]
+  },
+  {
+    "GroupId": "370567",
+    "ActivityCourseKey": "7c66a20b-498e-e811-814a-02bc62143fc0",
+    "StudentId": "12226018",
+    "ActivityKey": "7b66a20b-498e-e811-814a-02bc62143fc0",
+    "Answers": [
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            },
+            {
+              "test": "1",
+              "option": "1"
+            },
+            {
+              "test": "2",
+              "option": "2"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "1",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              },
+              {
+                "test": "2",
+                "option": "1"
+              },
+              {
+                "test": "2",
+                "option": "2"
+              },
+              {
+                "test": "1",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "2",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              },
+              {
+                "test": "1",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 3,
+        "Duration": 507,
+        "QuestionKey": "7a66a20b-498e-e811-814a-02bc62143fc0",
+        "Score": 3,
+        "LocalStartStamp": "2018-07-24T08:28:29.384Z",
+        "LocalEndStamp": "2018-07-24T08:28:39.651Z",
+        "TotalScore": 3,
+        "Star": 1
+      }
+    ]
+  },
+  {
+    "GroupId": "370567",
+    "ActivityCourseKey": "43150d12-498e-e811-814a-02bc62143fc0",
+    "StudentId": "12226018",
+    "ActivityKey": "42150d12-498e-e811-814a-02bc62143fc0",
+    "Answers": [
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "1"
+              },
+              {
+                "test": "0",
+                "option": "2"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 344,
+        "QuestionKey": "3d150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 1,
+        "LocalStartStamp": "2018-07-24T08:30:31.039Z",
+        "LocalEndStamp": "2018-07-24T08:30:36.881Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 153,
+        "QuestionKey": "3e150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:37.409Z",
+        "LocalEndStamp": "2018-07-24T08:30:39.952Z",
+        "TotalScore": 1,
+        "Star": 1
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 481,
+        "QuestionKey": "3f150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:40.480Z",
+        "LocalEndStamp": "2018-07-24T08:30:48.488Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "0"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 491,
+        "QuestionKey": "40150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0.5,
+        "LocalStartStamp": "2018-07-24T08:30:49.015Z",
+        "LocalEndStamp": "2018-07-24T08:30:57.188Z",
+        "TotalScore": 1,
+        "Star": 0
+      },
+      {
+        "Detail": {
+          "correctAnswers": [
+            {
+              "test": "0",
+              "option": "0"
+            }
+          ],
+          "studentAnswers": {
+            "optionSelectionFull": [
+              {
+                "test": "0",
+                "option": "2"
+              },
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ],
+            "optionSelection": [
+              {
+                "test": "0",
+                "option": "1"
+              }
+            ]
+          }
+        },
+        "TotalStar": 1,
+        "Duration": 440,
+        "QuestionKey": "41150d12-498e-e811-814a-02bc62143fc0",
+        "Score": 0,
+        "LocalStartStamp": "2018-07-24T08:30:57.722Z",
+        "LocalEndStamp": "2018-07-24T08:31:05.055Z",
+        "TotalScore": 1,
+        "Star": 0
+      }
+    ]
+  }
+]
