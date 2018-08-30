@@ -126,7 +126,6 @@ class FormatData {
           return matched;
         });
       });
-
     });
     return result;
   }

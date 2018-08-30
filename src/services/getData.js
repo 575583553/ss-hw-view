@@ -35,8 +35,11 @@ class GetData {
     const bookInfo = await this.getBookInfo();
     const answers = await this.getAnswerInfo();
     const activityInfo = await this.getActivityInfo();
-    const lessonInfo = FormatData.parserLesson(bookInfo, answers, activityInfo);
-    console.log(lessonInfo);
+    const lessonInfo = FormatData.parserLesson(
+      bookInfo,
+      answers,
+      activityInfo.Activities,
+    );
     return lessonInfo;
   }
 
