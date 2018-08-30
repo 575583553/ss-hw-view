@@ -130,7 +130,7 @@ class FormatData {
     return result;
   }
 
-  parserResult(info, answer, activitysInfo) {
+  parserResult(info = [], answer = [], activitysInfo = []) {
     let result = [];
     let questions = [];
     const units = this.unit(info);

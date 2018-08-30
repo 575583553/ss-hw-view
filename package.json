@@ -13,7 +13,7 @@
     "styled-components": "^3.4.2"
   },
   "scripts": {
-    "server": "nodemon server/index.js",
+    "server": "nodemon --watch server/index.js server/index.js",
     "start": "set PORT=4000 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
