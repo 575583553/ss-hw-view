@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Http from '../../services/http';
+import { Http, GetData } from '../../services';
 import { Answer } from '../../containers';
 
 export class ResultPanel extends Component {
@@ -13,7 +13,12 @@ export class ResultPanel extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const result = await GetData.getResult();
+    console.log(result);
+    // GetData.getResult.then((res) => {
+    //   console.log(res);
+    // });
     Http.get({ url: 'http://10.128.36.152:8080/result' }).then((result) => {
       this.setState({ data: result.data });
     });
@@ -22,7 +27,7 @@ export class ResultPanel extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <div className="title-Container">Title</div>
+        {/* <div className="title-Container">Title</div>
         <div className="main-container">
           <div className="student-container">student Info</div>
           <div className="answer-container">
@@ -30,7 +35,7 @@ export class ResultPanel extends Component {
               <Answer data={this.state.data[0].answer} />
             )}
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

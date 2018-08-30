@@ -15,14 +15,6 @@ class FormatData {
     return this.seekInfo(info, 8);
   }
 
-  setArray(info) {
-    const array = new Set();
-    info.forEach((item) => {
-      array.add(item.StudentId);
-    });
-    return array;
-  }
-
   activity(info) {
     return this.seekInfo(info, 16);
   }
@@ -38,8 +30,8 @@ class FormatData {
         if (match) belongActivity = activity;
         return match;
       });
-      if (!belongActivity) return;
 
+      if (!belongActivity) return;
       result.push({
         activityKey: belongActivity.Key,
         questions: [],
@@ -62,7 +54,7 @@ class FormatData {
   parserLesson(info, answer, activitys) {
     const result = [];
     const lessonInfo = this.lesson(info);
-    const activityInfo = this.parseActivity(info, activitys.Activities);
+    const activityInfo = this.parseActivity(info, activitys);
     const questionInfo = answer;
 
     lessonInfo.forEach((lesson) => {
@@ -84,6 +76,7 @@ class FormatData {
 
       belongLesson.activitys.push({
         activityKey: activity.activityKey,
+        Sequence: activity.Sequence,
         questions: activity.questions, //activity.questions
       });
     });
@@ -107,7 +100,7 @@ class FormatData {
         belongActivity.questions.some((ques, qIdx) => {
           const matched = questionKey === ques.questionKey;
           if (matched) {
-            if(!ques.studentsAnswer) {
+            if (!ques.studentsAnswer) {
               ques = {
                 ...ques,
                 correctNum: 0,
@@ -125,6 +118,7 @@ class FormatData {
               studentId: question.StudentId,
               score: answer.Score,
               TotalScore: answer.TotalScore,
+              optionSelection: answer.Detail.studentAnswers.optionSelection,
             });
 
             belongActivity.questions[qIdx] = ques;
@@ -132,11 +126,63 @@ class FormatData {
           return matched;
         });
       });
+
     });
     return result;
   }
 
-  parserResult(/* info, answer, activitys */) {}
+  parserResult(info, answer, activitysInfo) {
+    let result = [];
+    let questions = [];
+    const units = this.unit(info);
+    const lessonInfo = this.parserLesson(info, answer, activitysInfo);
+
+    units.forEach((unit) => {
+      result.push({
+        unitKey: unit.Key,
+        questions: [],
+      });
+    });
+
+    lessonInfo.forEach((lesson) => {
+      lesson.activitys.forEach((activity) => {
+        activity.questions.forEach((question, idx) => {
+          questions.push({
+            unitKey: lesson.ParentNodeKey,
+            lessonIdx: lesson.Sequence,
+            activityIdx: activity.Sequence,
+            questionIdx: idx,
+            questionKey: question.questionKey,
+            studentsAnswer: question.studentsAnswer,
+          });
+        });
+      });
+    });
+
+    questions.forEach((ques) => {
+      result.some((unit, uidx) => {
+        const match = unit.unitKey === ques.unitKey;
+        if (match) {
+          activitysInfo.some((activity) => {
+            return activity.Questions.some((question) => {
+              if (question.Key === ques.questionKey) {
+                const { tests, options, answers } = question.Body;
+                result[uidx].questions.push({
+                  ...ques,
+                  options,
+                  answers,
+                  stimulus: tests,
+                });
+              } else return false;
+            });
+          });
+        }
+        return match;
+      });
+    });
+
+    return result;
+  }
 }
 
 export default new FormatData();

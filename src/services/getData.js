@@ -10,56 +10,46 @@ const {
 
 class GetData {
   getBookInfo() {
-    return Http.get({ url: bookUrl });
+    return Http.get({ url: bookUrl }).then((res) => res.data);
   }
 
   getAnswerInfo() {
-    return Http.get({ url: answewrUrl });
+    return Http.get({ url: answewrUrl }).then((res) => res.data);
   }
 
   getStudentInfo() {
-    return Http.get({ url: sudentInfo });
-  }
-
-  getUnit() {
-    return this.getBookInfo().then((res) => {
-      const unit = FormatData.unit(res.data);
-      return unit;
-    });
+    return Http.get({ url: sudentInfo }).then((res) => res.data);
   }
 
   getActivityInfo() {
-    return Http.get({ url: activityInfo });
+    return Http.get({ url: activityInfo }).then((res) => res.data);
   }
 
-  getLesson() {
-    return this.getAnswerInfo().then((answer) => {
-      return this.getBookInfo().then((book) => {
-        return this.getActivityInfo().then((activity) => {
-          const lessonInfo = FormatData.parserLesson(
-            book.data,
-            answer.data,
-            activity.data,
-          );
-          return lessonInfo;
-        });
-      });
-    });
+  async getUnit() {
+    const bookInfo = await this.getBookInfo();
+    const unit = FormatData.unit(bookInfo);
+    return unit;
   }
 
-  getResult() {
-    return this.getAnswerInfo().then((answer) => {
-      return this.getBookInfo().then((book) => {
-        return this.getActivityInfo().then((activity) => {
-          const resultInfo = FormatData.parserResult(
-            book.data,
-            answer.data,
-            activity.data,
-          );
-          return resultInfo;
-        });
-      });
-    });
+  async getLesson() {
+    const bookInfo = await this.getBookInfo();
+    const answers = await this.getAnswerInfo();
+    const activityInfo = await this.getActivityInfo();
+    const lessonInfo = FormatData.parserLesson(bookInfo, answers, activityInfo);
+    console.log(lessonInfo);
+    return lessonInfo;
+  }
+
+  async getResult() {
+    const bookInfo = await this.getBookInfo();
+    const answers = await this.getAnswerInfo();
+    const activityInfo = await this.getActivityInfo();
+    const resultInfo = FormatData.parserResult(
+      bookInfo,
+      answers,
+      activityInfo.Activities,
+    );
+    return resultInfo;
   }
 }
 

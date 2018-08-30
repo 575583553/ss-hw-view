@@ -14,10 +14,9 @@ export class Unit extends Component {
     };
   }
 
-  componentDidMount() {
-    GetData.getUnit().then((res) => {
-      this.setState({ unit: res });
-    });
+  async componentDidMount() {
+    const unit = await GetData.getUnit();
+    this.setState({ unit: unit });
   }
 
   render() {

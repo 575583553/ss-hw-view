@@ -26,16 +26,14 @@ export class LessonPanel extends Component {
     this.setState({ currentLessonId: id });
   }
 
-  componentDidMount() {
-    GetData.getStudentInfo().then((res) => {
-      this.setState({
-        sudents: res.data,
-        currentStudentId: res.data[0].UserId,
-      });
-    });
-
-    GetData.getLesson().then((res) => {
-      this.setState({ lessonInfo: res, currentLessonId: res[0].Key });
+  async componentDidMount() {
+    const lessons = await GetData.getLesson();
+    const studentsInfo = await GetData.getStudentInfo();
+    this.setState({
+      lessonInfo: lessons,
+      currentLessonId: lessons[0].Key,
+      sudents: studentsInfo,
+      currentStudentId: studentsInfo[0].UserId,
     });
   }
 
