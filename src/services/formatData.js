@@ -74,6 +74,8 @@ class FormatData {
         return match;
       });
 
+      if (!belongLesson) return;
+
       belongLesson.activitys.push({
         activityKey: activity.activityKey,
         Sequence: activity.Sequence,

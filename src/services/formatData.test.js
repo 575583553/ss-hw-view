@@ -74,6 +74,36 @@ test('should have a well working parseActivity function', () => {
   spy.mockRestore();
 });
 
+test('should have a well working parserLesson function', () => {
+  const lessonSpy = jest
+    .spyOn(formatData, 'lesson')
+    .mockImplementation(() => []);
+
+  const parseActivitySpy = jest
+    .spyOn(formatData, 'parseActivity')
+    .mockImplementation(() => [
+      {
+        activityKey: '697a0238-3d99-e811-814a-02bc62143fc0',
+        questions: [
+          {
+            questionKey: 'Key',
+            TotalScore: 4,
+            score: 0,
+          },
+        ],
+        lessonKey: 'a8f3c59c-c8db-4f9f-af28-26a045f2d1b4',
+        Sequence: 0,
+      },
+    ]);
+
+  formatData.parserLesson([], answer, []);
+
+  expect(parseActivitySpy).toHaveBeenCalledWith([], []);
+
+  parseActivitySpy.mockRestore();
+  lessonSpy.mockRestore();
+});
+
 test('should have a well working seekInfo function', () => {
   const mockInfo = [
     { Level: 2, info: 'info' },
