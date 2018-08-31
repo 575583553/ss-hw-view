@@ -11,3 +11,5 @@ export { GroupInfo } from './groupInfo';
 export { ProgressBar } from './progressBar';
 export { Arrow } from './arrow';
 export { Text } from './text';
+export { Tab } from './tab';
+export { Answer } from './answer';

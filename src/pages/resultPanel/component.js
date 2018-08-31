@@ -1,41 +1,53 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Http, GetData } from '../../services';
-import { Answer } from '../../containers';
+import { GetData } from '../../services';
+import { Arrow } from '../../components';
+import { Page } from '../../containers';
 
 export class ResultPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      num: 0,
+      result: {},
+      students: []
     };
   }
 
   async componentDidMount() {
+    const currentUnitKey = this.props.location.state.unitKey;
     const result = await GetData.getResult();
-    console.log(result);
-    // GetData.getResult.then((res) => {
-    //   console.log(res);
-    // });
-    Http.get({ url: 'http://10.128.36.152:8080/result' }).then((result) => {
-      this.setState({ data: result.data });
-    });
+    const students = await GetData.getStudentInfo();
+
+    const questions = result.filter((item) => {
+      return currentUnitKey === item.unitKey;
+    })[0];
+    this.setState({ result: questions, students, });
   }
 
   render() {
+    const { studentId, questionKey } = this.props.location.state;
+    const questions = this.state.result.questions;
+    const students = this.state.students;
+
     return (
       <div className={this.props.className}>
-        {/* <div className="title-Container">Title</div>
+        <div className="next-icon icon">
+          <Arrow />
+        </div>
+        <div className="prev-icon icon">
+          <Arrow direction="left" />
+        </div>
         <div className="main-container">
-          <div className="student-container">student Info</div>
-          <div className="answer-container">
-            {this.state.data.length > 0 && (
-              <Answer data={this.state.data[0].answer} />
-            )}
-          </div>
-        </div> */}
+          {questions &&
+            questions.map((item, idx) => {
+              return (
+                item.questionKey === questionKey && (
+                  <Page data={item} students={students} key={idx} studentId={studentId} />
+                )
+              );
+            })}
+        </div>
       </div>
     );
   }
@@ -43,4 +55,5 @@ export class ResultPanel extends Component {
 
 ResultPanel.propTypes = {
   className: PropTypes.string,
+  location: PropTypes.object,
 };

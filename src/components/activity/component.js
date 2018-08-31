@@ -6,10 +6,10 @@ import { StudentInfo, GroupInfo } from '../index';
 
 export class Activity extends Component {
   render() {
-    const { data, idx, studentId } = this.props;
+    const { data, idx, studentId, unitKey } = this.props;
     const location = {
       pathname: '/result',
-      state: { studentId: studentId },
+      state: { studentId, unitKey },
     };
 
     return (
@@ -18,7 +18,14 @@ export class Activity extends Component {
         <div className="questions-container">
           {data.questions.map((item, index) => {
             return (
-              <Link to={location} className="question" key={index}>
+              <Link
+                to={{
+                  pathname: '/result',
+                  state: { studentId, unitKey, questionKey: item.questionKey },
+                }}
+                className="question"
+                key={index}
+              >
                 {studentId !== '-1' ? (
                   <StudentInfo data={item} idx={index} studentId={studentId} />
                 ) : (
@@ -37,5 +44,6 @@ Activity.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object,
   studentId: PropTypes.string,
+  unitKey: PropTypes.string,
   idx: PropTypes.number,
 };

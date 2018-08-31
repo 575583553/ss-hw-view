@@ -5,7 +5,7 @@ import { Panel } from '../../components';
 
 export class Info extends Component {
   render() {
-    const { data, studentId, lessonId, click, currentUnitId } = this.props;
+    const { data, studentId, lessonId, click, currentUnitId, unitKey } = this.props;
 
     return (
       <div className={this.props.className}>
@@ -17,6 +17,7 @@ export class Info extends Component {
                 key={item.Sequence}
                 studentId={studentId}
                 lessonId={lessonId}
+                unitKey={unitKey}
                 click={click}
               />
             ),
@@ -31,6 +32,7 @@ Info.propTypes = {
   data: PropTypes.array,
   studentId: PropTypes.string,
   lessonId: PropTypes.string,
+  unitKey: PropTypes.string,
   currentUnitId: PropTypes.string,
   click: PropTypes.func,
 };

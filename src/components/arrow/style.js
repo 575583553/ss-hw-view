@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { Arrow as component } from './component';
 
 export const Arrow = styled(component)`
-  width: 100%;
-  height: 100%;
+  width: 11px;
+  height: 15px;
   position: relative;
+  transform: ${(props) =>
+    props.direction === 'left' ? 'rotateY(180deg)' : 'rotateY(0)'};
   &:before {
     content: '';
     display: block;

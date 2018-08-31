@@ -5,7 +5,7 @@ import { Activity } from '../activity';
 
 export class Panel extends Component {
   render() {
-    const { data, studentId, click } = this.props;
+    const { data, studentId, unitKey, click } = this.props;
     // console.log(data);
     return (
       <div className={this.props.className}>
@@ -20,6 +20,7 @@ export class Panel extends Component {
                 <Activity
                   data={item}
                   idx={index}
+                  unitKey={unitKey}
                   studentId={studentId}
                   click={click}
                 />
@@ -36,6 +37,7 @@ Panel.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object,
   studentId: PropTypes.string,
+  unitKey: PropTypes.string,
   lessonId: PropTypes.string,
   click: PropTypes.func,
 };

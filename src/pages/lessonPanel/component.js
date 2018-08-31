@@ -71,6 +71,7 @@ export class LessonPanel extends Component {
                   studentId={currentStudentId}
                   lessonId={currentLessonId}
                   currentUnitId={state.key}
+                  unitKey={state.key}
                   click={this.changeLessonId}
                 />
               </div>
