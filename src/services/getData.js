@@ -1,9 +1,23 @@
 import Http from './http';
-import FormatData from './formatData';
+import Parser from './parser';
 import config from '../config/config';
 const { bookUrl, answewrUrl, sudentInfo, activityInfo, resource } = config;
 
 class GetData {
+  constructor() {
+    this.parser = void 0;
+  }
+
+  async getStart() {
+    return new Promise(async (resolve) => {
+      if (this.parser) resolve();
+      else {
+        const bookInfo = await this.getBookInfo();
+        this.parser = new Parser(bookInfo);
+      }
+    });
+  }
+
   getBookInfo() {
     return Http.get({ url: bookUrl }).then((res) => res.data);
   }
@@ -21,17 +35,18 @@ class GetData {
   }
 
   async getUnit() {
-    const bookInfo = await this.getBookInfo();
-    const unit = FormatData.unit(bookInfo);
+    await this.getStart();
+    // const bookInfo = await this.getBookInfo();
+    const unit = this.parser.unit();
     return unit;
   }
 
   async getLesson() {
-    const bookInfo = await this.getBookInfo();
+    await this.getStart();
+    // const bookInfo = await this.getBookInfo();
     const answers = await this.getAnswerInfo();
     const activityInfo = await this.getActivityInfo();
-    const lessonInfo = FormatData.parserLesson(
-      bookInfo,
+    const lessonInfo = this.parser.parserLesson(
       answers,
       activityInfo.Activities,
     );
@@ -39,11 +54,11 @@ class GetData {
   }
 
   async getResult() {
-    const bookInfo = await this.getBookInfo();
+    await this.getStart();
+    // const bookInfo = await this.getBookInfo();
     const answers = await this.getAnswerInfo();
     const activityInfo = await this.getActivityInfo();
-    const resultInfo = FormatData.parserResult(
-      bookInfo,
+    const resultInfo = this.parser.parserResult(
       answers,
       activityInfo.Activities,
       resource,

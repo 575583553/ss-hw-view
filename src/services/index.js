@@ -1,6 +1,6 @@
 import AudioService from './audioServer';
-import FormatData from './formatData';
+import Parser from './parser';
 import GetData from './getData';
 import Http from './http';
 
-export { AudioService, FormatData, GetData, Http };
+export { AudioService, Parser, GetData, Http };

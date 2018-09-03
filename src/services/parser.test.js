@@ -1,36 +1,13 @@
 const _ = require('lodash');
-import formatData from './formatData';
+import Parser from './parser';
 import info from '../../server/ssiBookInfo.json';
 import answer from '../../server/ssiAnswer.json';
 import activitys from '../../server/ssiActivity.json';
 
-test('should have a well working seekInfo function', () => {
-  const mockInfo = [
-    { Level: 2, info: 'info' },
-    { Level: 4, info: 'info' },
-    { Level: 2, info: 'info2' },
-  ];
-  const result = formatData.seekInfo(mockInfo, 2);
-  expect(result).toEqual([
-    { Level: 2, info: 'info' },
-    { Level: 2, info: 'info2' },
-  ]);
-});
+let formatData;
 
-test('should have a well working book function', () => {
-  testSeekInfoCalledCorrectlyWith('book', 2);
-});
-
-test('should have a well working unit function', () => {
-  testSeekInfoCalledCorrectlyWith('unit', 4);
-});
-
-test('should have a well working lesson function', () => {
-  testSeekInfoCalledCorrectlyWith('lesson', 8);
-});
-
-test('should have a well working activity function', () => {
-  testSeekInfoCalledCorrectlyWith('activity', 16);
+beforeEach(() => {
+  formatData = new Parser(info);
 });
 
 test('should have a well working parseActivity function', () => {
@@ -48,7 +25,7 @@ test('should have a well working parseActivity function', () => {
       Sequence: 0,
     },
   ];
-  const spy = jest.spyOn(formatData, 'activity').mockImplementation(() => [
+  formatData.activity = [
     {
       CreatedBy: null,
       CreatedStamp: '2018-08-06T06:06:42.673Z',
@@ -72,8 +49,7 @@ test('should have a well working parseActivity function', () => {
       Description: '',
       Body: null,
     },
-  ]);
-  const mockInfo = [];
+  ];
   const mockActivity = [
     {
       Key: '697a0238-3d99-e811-814a-02bc62143fc0',
@@ -93,11 +69,8 @@ test('should have a well working parseActivity function', () => {
       Questions: [],
     },
   ];
-  const result = formatData.parseActivity(mockInfo, mockActivity);
-  expect(spy).toHaveBeenCalledWith(mockInfo);
+  const result = formatData.parseActivity(mockActivity);
   expect(result).toEqual(expectResult);
-
-  spy.mockRestore();
 });
 
 test('should have a well working parserLesson function', () => {
@@ -169,27 +142,19 @@ test('should have a well working parserLesson function', () => {
   delete expectResult[0].activitys[0].lessonKey;
   expectResult[0].activitys[0].questions = _.cloneDeep(expectQuestions);
 
-  const lessonSpy = jest
-    .spyOn(formatData, 'lesson')
-    .mockImplementation(() => expectLesson);
+  formatData.lesson = expectLesson;
 
   const parseActivitySpy = jest
     .spyOn(formatData, 'parseActivity')
     .mockImplementation(() => expectActivities);
 
-  const result = formatData.parserLesson(
-    'mockInfo',
-    mockAnswer,
-    'mockActivities',
-  );
+  const result = formatData.parserLesson(mockAnswer, 'mockActivities');
 
-  expect(lessonSpy).toHaveBeenCalledWith('mockInfo');
-  expect(parseActivitySpy).toHaveBeenCalledWith('mockInfo', 'mockActivities');
+  expect(parseActivitySpy).toHaveBeenCalledWith('mockActivities');
 
   expect(result).toEqual(expectResult);
 
   parseActivitySpy.mockRestore();
-  lessonSpy.mockRestore();
 });
 
 test('should have a well working parserResource function', () => {
@@ -219,13 +184,8 @@ test('should have a parser result function', () => {
 });
 
 test('should still work if params are not fully passed by calling parser result function', () => {
-  const result1 = formatData.parserResult(info);
-  const result2 = formatData.parserResult(undefined, answer);
-  const result3 = formatData.parserResult(
-    undefined,
-    undefined,
-    activitys.Activities,
-  );
+  const result1 = formatData.parserResult(answer);
+  const result2 = formatData.parserResult(undefined, activitys.Activities);
 });
 
 test('should return an array by parser result function', () => {
@@ -234,7 +194,7 @@ test('should return an array by parser result function', () => {
 });
 
 test('should contain unitKey and questions in each object among result array by parser result function', () => {
-  const result = formatData.parserResult(info, answer, activitys.Activities);
+  const result = formatData.parserResult(answer, activitys.Activities);
 
   result.forEach((res) => {
     expect(res).toHaveProperty('unitKey');
@@ -261,31 +221,24 @@ test('should contain certain property in each object.questions among result arra
 });
 
 test('should call unit, parserLesson and parserResources correctly when calling parseResult function', () => {
-  const unitSpy = jest.spyOn(formatData, 'unit');
   const parserLessonSpy = jest.spyOn(formatData, 'parserLesson');
   const parserResourcesSpy = jest.spyOn(formatData, 'parserResources');
 
-  formatData.parserResult(info, answer, activitys.Activities);
+  formatData.parserResult(answer, activitys.Activities);
 
-  expect(unitSpy).toHaveBeenCalledWith(info);
-  expect(parserLessonSpy).toHaveBeenCalledWith(
-    info,
-    answer,
-    activitys.Activities,
-  );
+  expect(parserLessonSpy).toHaveBeenCalledWith(answer, activitys.Activities);
   expect(parserResourcesSpy).toHaveBeenCalled();
 
-  unitSpy.mockRestore();
   parserLessonSpy.mockRestore();
   parserResourcesSpy.mockRestore();
 });
 
 test('should have a well working parseResult function', () => {
-  const unitSpy = jest.spyOn(formatData, 'unit').mockImplementation(() => [
+  formatData.unit = [
     {
       Key: 'unit.Key',
     },
-  ]);
+  ];
   const parserLessonSpy = jest
     .spyOn(formatData, 'parserLesson')
     .mockImplementation(() => [
@@ -386,17 +339,9 @@ test('should have a well working parseResult function', () => {
     },
   ];
 
-  const result = formatData.parserResult([], [], mockActivitysInfo);
+  const result = formatData.parserResult([], mockActivitysInfo);
 
   expect(result).toEqual(expectResult);
 
-  unitSpy.mockRestore();
   parserLessonSpy.mockRestore();
 });
-
-function testSeekInfoCalledCorrectlyWith(type, level) {
-  const spy = jest.spyOn(formatData, 'seekInfo');
-  formatData[type](info);
-  expect(spy).toHaveBeenCalledWith(info, level);
-  spy.mockRestore();
-}

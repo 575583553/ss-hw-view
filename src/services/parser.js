@@ -1,26 +1,16 @@
-class FormatData {
-  seekInfo(info, number) {
-    return info.filter((i) => i.Level === number);
+import Info from './seekInfo';
+
+export default class Parser {
+  constructor(info) {
+    const allInfo = new Info(info);
+    // this.book = allInfo.book;
+    this.unit = allInfo.unit;
+    this.lesson = allInfo.lesson;
+    this.activity = allInfo.activity;
   }
 
-  book(info) {
-    return this.seekInfo(info, 2);
-  }
-
-  unit(info) {
-    return this.seekInfo(info, 4);
-  }
-
-  lesson(info) {
-    return this.seekInfo(info, 8);
-  }
-
-  activity(info) {
-    return this.seekInfo(info, 16);
-  }
-
-  parseActivity(info = [], activitys = []) {
-    const activityInfo = this.activity(info);
+  parseActivity(activitys = []) {
+    const activityInfo = this.activity;
     const result = [];
 
     activityInfo.forEach((item, idx) => {
@@ -63,10 +53,10 @@ class FormatData {
     return data;
   }
 
-  parserLesson(info = [], answer = [], activitys = []) {
+  parserLesson(answer = [], activitys = []) {
     const result = [];
-    const lessonInfo = this.lesson(info);
-    const activityInfo = this.parseActivity(info, activitys);
+    const lessonInfo = this.lesson;
+    const activityInfo = this.parseActivity(activitys);
     const questionInfo = answer;
 
     lessonInfo.forEach((lesson) => {
@@ -144,11 +134,11 @@ class FormatData {
     return result;
   }
 
-  parserResult(info = [], answer = [], activitysInfo = [], resource) {
+  parserResult(answer = [], activitysInfo = [], resource) {
     let result = [];
     let questions = [];
-    const units = this.unit(info);
-    const lessonInfo = this.parserLesson(info, answer, activitysInfo);
+    const units = this.unit;
+    const lessonInfo = this.parserLesson(answer, activitysInfo);
 
     units.forEach((unit) => {
       result.push({
@@ -206,5 +196,3 @@ class FormatData {
     return result;
   }
 }
-
-export default new FormatData();
