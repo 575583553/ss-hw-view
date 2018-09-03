@@ -4,10 +4,6 @@ import info from '../../server/ssiBookInfo.json';
 import answer from '../../server/ssiAnswer.json';
 import activitys from '../../server/ssiActivity.json';
 
-afterEach(() => {
-  jest.resetAllMocks();
-});
-
 test('should have a well working seekInfo function', () => {
   const mockInfo = [
     { Level: 2, info: 'info' },
@@ -235,44 +231,170 @@ test('should return an array by parser result function', () => {
   expect(Array.isArray(result)).toBeTruthy();
 });
 
+test('should contain unitKey and questions in each object among result array by parser result function', () => {
+  const result = formatData.parserResult(info, answer, activitys.Activities);
+
+  result.forEach((res) => {
+    expect(res).toHaveProperty('unitKey');
+    expect(res).toHaveProperty('questions');
+  });
+});
+
+test('should contain certain property in each object.questions among result array by parser result function', () => {
+  const result = formatData.parserResult(info, answer, activitys.Activities);
+  const requiredProperty = [
+    'unitKey',
+    'lessonIdx',
+    'activityIdx',
+    'questionIdx',
+    'questionKey',
+    'studentsAnswer',
+  ];
+
+  result[0].questions.forEach((ques) => {
+    requiredProperty.forEach((prop) => {
+      expect(ques).toHaveProperty(prop);
+    });
+  });
+});
+
+test('should call unit, parserLesson and parserResources correctly when calling parseResult function', () => {
+  const unitSpy = jest.spyOn(formatData, 'unit');
+  const parserLessonSpy = jest.spyOn(formatData, 'parserLesson');
+  const parserResourcesSpy = jest.spyOn(formatData, 'parserResources');
+
+  formatData.parserResult(info, answer, activitys.Activities);
+
+  expect(unitSpy).toHaveBeenCalledWith(info);
+  expect(parserLessonSpy).toHaveBeenCalledWith(
+    info,
+    answer,
+    activitys.Activities,
+  );
+  expect(parserResourcesSpy).toHaveBeenCalled();
+
+  unitSpy.mockRestore();
+  parserLessonSpy.mockRestore();
+  parserResourcesSpy.mockRestore();
+});
+
+test('should have a well working parseResult function', () => {
+  const unitSpy = jest.spyOn(formatData, 'unit').mockImplementation(() => [
+    {
+      Key: 'unit.Key',
+    },
+  ]);
+  const parserLessonSpy = jest
+    .spyOn(formatData, 'parserLesson')
+    .mockImplementation(() => [
+      {
+        Sequence: 0,
+        ParentNodeKey: 'unit.Key',
+        lessonKey: 'lesson.Key',
+        activitys: [
+          {
+            activityKey: 'activity.Key',
+            questions: [
+              {
+                questionKey: 'question.Key',
+                TotalScore: 4,
+                score: 0,
+                correctNum: 1,
+                totalNum: 1,
+                studentsAnswer: [
+                  {
+                    studentId: 'question.StudentId',
+                    score: 1,
+                    TotalScore: 1,
+                    optionSelection: [
+                      {
+                        test: '2',
+                        option: '2',
+                      },
+                      {
+                        test: '0',
+                        option: '0',
+                      },
+                      {
+                        test: '1',
+                        option: '1',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+            Sequence: 0,
+          },
+        ],
+      },
+    ]);
+
+  const mockActivitysInfo = [
+    {
+      Questions: [
+        {
+          Key: 'question.Key',
+          Body: {
+            tests: ['tests'],
+            options: ['options'],
+            answers: ['answers'],
+          },
+        },
+      ],
+    },
+  ];
+
+  const expectResult = [
+    {
+      unitKey: 'unit.Key',
+      questions: [
+        {
+          unitKey: 'unit.Key',
+          lessonIdx: 0,
+          activityIdx: 0,
+          questionIdx: 0,
+          questionKey: 'question.Key',
+          studentsAnswer: [
+            {
+              studentId: 'question.StudentId',
+              score: 1,
+              TotalScore: 1,
+              optionSelection: [
+                {
+                  test: '0',
+                  option: '0',
+                },
+                {
+                  test: '1',
+                  option: '1',
+                },
+                {
+                  test: '2',
+                  option: '2',
+                },
+              ],
+            },
+          ],
+          options: ['options'],
+          answers: ['answers'],
+          stimulus: ['tests'],
+        },
+      ],
+    },
+  ];
+
+  const result = formatData.parserResult([], [], mockActivitysInfo);
+
+  expect(result).toEqual(expectResult);
+
+  unitSpy.mockRestore();
+  parserLessonSpy.mockRestore();
+});
+
 function testSeekInfoCalledCorrectlyWith(type, level) {
   const spy = jest.spyOn(formatData, 'seekInfo');
   formatData[type](info);
   expect(spy).toHaveBeenCalledWith(info, level);
   spy.mockRestore();
 }
-// todo: add test cases for parser result function
-// result schema:
-// [
-//   {
-//       unitKey: '', // bookInfo "Level": 4, Key
-//       questions: [
-//           {
-//             lessonIdx: '', // bookInfo "Level": 8, Sequence
-//             activityIdx: '', // bookInfo "Level": 16, Sequence
-//             questionIdx: '', //Activityinfo
-//             questionKey: '', //Activityinfo Questions Key
-//             stimulus: [ //Activityinfo Questions Body  tests
-//                 {
-//                     id: '',
-//                     text/image/audio: ''
-//                 }
-//             ],
-//             options: [], // Activityinfo Questions options
-//             correctAnswer: [ // Activityinfo Questions Body answers
-//                 {
-//                   option: $index
-//                 }
-//             ],
-//             studentsAnswer: [ // Activityinfo Questions Key -> answerInfo.json  Answers studentAnswers
-//                 {
-//                     studentId: '',
-//                     answers: [
-//                         option: $index
-//                     ]
-//                 }
-//             ]
-//         }
-//       ]
-//   }
-// ]

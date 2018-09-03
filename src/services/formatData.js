@@ -51,8 +51,7 @@ class FormatData {
     return result;
   }
 
-  parserResources(data, resource) {
-    if (!Array.isArray(data)) return [];
+  parserResources(data = [], resource = '') {
     data.forEach((item, idx) => {
       const { audio, image } = item;
       const option = data[idx];
