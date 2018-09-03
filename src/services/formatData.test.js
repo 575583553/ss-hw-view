@@ -1,3 +1,4 @@
+const _ = require('lodash');
 import formatData from './formatData';
 import info from '../../server/ssiBookInfo.json';
 import answer from '../../server/ssiAnswer.json';
@@ -75,30 +76,92 @@ test('should have a well working parseActivity function', () => {
 });
 
 test('should have a well working parserLesson function', () => {
+  const mockAnswer = [
+    {
+      StudentId: 'question.StudentId',
+      ActivityKey: 'activity.Key',
+      Answers: [
+        {
+          QuestionKey: 'question.Key',
+          Score: 1,
+          TotalScore: 1,
+          Detail: {
+            studentAnswers: {
+              optionSelection: 'answer.Detail.studentAnswers.optionSelection',
+            },
+          },
+        },
+      ],
+    },
+  ];
+
+  const expectLesson = [
+    {
+      Sequence: 0,
+      ParentNodeKey: 'lesson.ParentNodeKey',
+      Key: 'lesson.Key',
+      lessonKey: 'lesson.Key',
+      activitys: [],
+    },
+  ];
+
+  const expectActivities = [
+    {
+      activityKey: 'activity.Key',
+      questions: [
+        {
+          questionKey: 'question.Key',
+          TotalScore: 4,
+          score: 0,
+        },
+      ],
+      lessonKey: 'lesson.Key',
+      Sequence: 0,
+    },
+  ];
+
+  const expectQuestions = [
+    {
+      questionKey: 'question.Key',
+      TotalScore: 4,
+      score: 0,
+      correctNum: 1,
+      totalNum: 1,
+      studentsAnswer: [
+        {
+          studentId: 'question.StudentId',
+          score: 1,
+          TotalScore: 1,
+          optionSelection: 'answer.Detail.studentAnswers.optionSelection',
+        },
+      ],
+    },
+  ];
+
+  const expectResult = _.cloneDeep(expectLesson);
+  delete expectResult[0].Key;
+  expectResult[0].activitys = _.cloneDeep(expectActivities);
+  delete expectResult[0].activitys[0].lessonKey;
+  expectResult[0].activitys[0].questions = _.cloneDeep(expectQuestions);
+
   const lessonSpy = jest
     .spyOn(formatData, 'lesson')
-    .mockImplementation(() => []);
+    .mockImplementation(() => expectLesson);
 
   const parseActivitySpy = jest
     .spyOn(formatData, 'parseActivity')
-    .mockImplementation(() => [
-      {
-        activityKey: '697a0238-3d99-e811-814a-02bc62143fc0',
-        questions: [
-          {
-            questionKey: 'Key',
-            TotalScore: 4,
-            score: 0,
-          },
-        ],
-        lessonKey: 'a8f3c59c-c8db-4f9f-af28-26a045f2d1b4',
-        Sequence: 0,
-      },
-    ]);
+    .mockImplementation(() => expectActivities);
 
-  formatData.parserLesson([], answer, []);
+  const result = formatData.parserLesson(
+    'mockInfo',
+    mockAnswer,
+    'mockActivities',
+  );
 
-  expect(parseActivitySpy).toHaveBeenCalledWith([], []);
+  expect(lessonSpy).toHaveBeenCalledWith('mockInfo');
+  expect(parseActivitySpy).toHaveBeenCalledWith('mockInfo', 'mockActivities');
+
+  expect(result).toEqual(expectResult);
 
   parseActivitySpy.mockRestore();
   lessonSpy.mockRestore();
