@@ -22,15 +22,16 @@ export class Tab extends Component {
               })}
             </div>
             <div className="score-container">
-              {answer.map((item) => {
-                return (
-                  item.studentId === studentId && (
-                    <div className="score" key={studentId}>
-                      {item.score} / {item.TotalScore}
-                    </div>
-                  )
-                );
-              })}
+              {answer &&
+                answer.map((item) => {
+                  return (
+                    item.studentId === studentId && (
+                      <div className="score" key={studentId}>
+                        {item.score} / {item.TotalScore}
+                      </div>
+                    )
+                  );
+                })}
             </div>
           </div>
           <div className="tab">

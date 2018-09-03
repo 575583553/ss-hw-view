@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 export class Text extends Component {
   render() {
-    return <div className={this.props.className}>{this.props.text}</div>;
+    return (
+      <div className={this.props.className}>
+        {this.props.text.replace(/<[^>]+>/g, '')}
+      </div>
+    );
   }
 }
 

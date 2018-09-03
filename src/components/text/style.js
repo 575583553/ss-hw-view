@@ -5,7 +5,7 @@ export const Text = styled(component)`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: ${props => props.align === 'left' ? 'flex-start' : 'center'};
   align-items: center;
   color: ${(props) => (props.color ? props.color : '#666')};
   font-style: ${(props) => (props.italic ? 'italic' : 'normal')};

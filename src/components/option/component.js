@@ -5,20 +5,16 @@ import { Stimulus } from '../stimulus';
 
 export class Option extends Component {
   render() {
-    const { data, showResult, num } = this.props;
-    const inCorrect = data.isAnswer === 'false' ? 'inCorrect' : '';
-    const resultText = data.isAnswer === 'true' ? 'correct' : 'incorrect';
+    const { data, index, options, correct } = this.props;
+    const showOption = data.filter((item) => {
+      return +item.test === index;
+    });
 
     return (
-      <div className={this.props.className}>
-        <div className={`option ${inCorrect}`}>
-          <Stimulus data={this.props.data} />
-        </div>
-        {showResult && (
-          <div className="option-result">
-            {num} student {resultText}
-          </div>
-        )}
+      <div className={`${this.props.className}${correct ? '' : ' inCorrect'}`}>
+        {showOption.map((item, idx) => {
+          return <Stimulus data={options[item.option]} key={idx} />;
+        })}
       </div>
     );
   }
@@ -26,7 +22,8 @@ export class Option extends Component {
 
 Option.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object,
-  showResult: PropTypes.bool,
-  num: PropTypes.number,
+  data: PropTypes.array,
+  index: PropTypes.number,
+  options: PropTypes.array,
+  correct: PropTypes.bool,
 };

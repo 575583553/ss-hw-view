@@ -2,36 +2,21 @@ import styled from 'styled-components';
 
 import { Question as component } from './component';
 
-const FontSize = 20;
-
 export const Question = styled(component)`
   width: 100%;
-  .question-title {
-    height: ${40 / FontSize}rem;
-    line-height: ${40 / FontSize}rem;
-  }
-  .main-container {
-    background: #fff;
-    padding: 10px 10px 10px 20px;
-    margin-bottom: 20px;
-  }
-  .options-container {
-    position: relative;
+  margin-right: 20px;
+  .info-item {
+    width: 100%;
     display: flex;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    align-items: center;
+    flex-direction: column;
   }
-  .result-info {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    font-size: 16px;
-    color: green;
+  .correct-answer {
+    width: 100%;
+    border: 2px solid #76cd48;
+    margin: 20px 0;
   }
   .student-answer {
-    display: flex;
-    position: relative;
+    width: 80%;
   }
 `;

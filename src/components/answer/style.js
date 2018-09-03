@@ -13,4 +13,19 @@ export const Answer = styled(component)`
     width: 70%;
     padding: 0 20px;
   }
+  .option-container {
+    margin-right: 20px;
+  }
+  .stimulus {
+    width: 100%;
+  }
+  .info-container {
+    display: flex;
+    width: 120px;
+    margin-right: 15px;
+  }
+  .lab {
+    font-size: 14px;
+    color: #666;
+  }
 `;

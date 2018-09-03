@@ -1,40 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Option } from '../option';
+import { Option, Stimulus } from '../index';
 
 export class Question extends Component {
   render() {
-    const { title, option, studentAnswer } = this.props.data;
+    const { answer, options, studentsAnswer, studentId, index } = this.props;
 
     return (
       <div className={this.props.className}>
-        {title && <div className="question-title">{title}</div>}
-        <div className="main-container">
-          <div className="options-container">
-            {option.map((item, index) => {
-              return <Option key={index} data={item} info="correct answer" />;
-            })}
-
-            <div className="result-info">correct answers</div>
+        <div className="info-item">
+          <div className="correct-answer">
+            <Stimulus data={answer} />
           </div>
           <div className="student-answer">
-            {studentAnswer.map((item) => {
-              return item.optionSelection.map((option, index) => {
+            {studentsAnswer &&
+              studentsAnswer.map((student) => {
                 return (
-                  <Option
-                    key={index}
-                    data={option}
-                    info={
-                      option.isAnswer === 'trueinCorrect'
-                        ? 'correct response'
-                        : 'incorrect response'
-                    }
-                  />
+                  student.studentId === studentId && (
+                    <Option
+                      key={studentId}
+                      options={options}
+                      data={student.optionSelection}
+                      index={index}
+                      correct={student.TotalScore === student.score}
+                    />
+                  )
                 );
-              });
-            })}
-            <div className="result-info">student answers</div>
+              })}
           </div>
         </div>
       </div>
@@ -44,5 +37,9 @@ export class Question extends Component {
 
 Question.propTypes = {
   className: PropTypes.string,
-  data: PropTypes.object,
+  answer: PropTypes.object,
+  options: PropTypes.array,
+  studentsAnswer: PropTypes.array,
+  studentId: PropTypes.string,
+  index: PropTypes.number,
 };
