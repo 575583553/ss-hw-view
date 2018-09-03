@@ -8,6 +8,35 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
+test('should have a well working seekInfo function', () => {
+  const mockInfo = [
+    { Level: 2, info: 'info' },
+    { Level: 4, info: 'info' },
+    { Level: 2, info: 'info2' },
+  ];
+  const result = formatData.seekInfo(mockInfo, 2);
+  expect(result).toEqual([
+    { Level: 2, info: 'info' },
+    { Level: 2, info: 'info2' },
+  ]);
+});
+
+test('should have a well working book function', () => {
+  testSeekInfoCalledCorrectlyWith('book', 2);
+});
+
+test('should have a well working unit function', () => {
+  testSeekInfoCalledCorrectlyWith('unit', 4);
+});
+
+test('should have a well working lesson function', () => {
+  testSeekInfoCalledCorrectlyWith('lesson', 8);
+});
+
+test('should have a well working activity function', () => {
+  testSeekInfoCalledCorrectlyWith('activity', 16);
+});
+
 test('should have a well working parseActivity function', () => {
   const expectResult = [
     {
@@ -165,35 +194,6 @@ test('should have a well working parserLesson function', () => {
 
   parseActivitySpy.mockRestore();
   lessonSpy.mockRestore();
-});
-
-test('should have a well working seekInfo function', () => {
-  const mockInfo = [
-    { Level: 2, info: 'info' },
-    { Level: 4, info: 'info' },
-    { Level: 2, info: 'info2' },
-  ];
-  const result = formatData.seekInfo(mockInfo, 2);
-  expect(result).toEqual([
-    { Level: 2, info: 'info' },
-    { Level: 2, info: 'info2' },
-  ]);
-});
-
-test('should have a well working book function', () => {
-  testSeekInfoCalledCorrectlyWith('book', 2);
-});
-
-test('should have a well working unit function', () => {
-  testSeekInfoCalledCorrectlyWith('unit', 4);
-});
-
-test('should have a well working lesson function', () => {
-  testSeekInfoCalledCorrectlyWith('lesson', 8);
-});
-
-test('should have a well working activity function', () => {
-  testSeekInfoCalledCorrectlyWith('activity', 16);
 });
 
 test('should have a parser result function', () => {
