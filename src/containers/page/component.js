@@ -5,7 +5,7 @@ import { Text, Tab, Answer } from '../../components';
 
 export class Page extends Component {
   render() {
-    const {studentId, students, data} = this.props;
+    const { studentId, students, data } = this.props;
     const {
       activityIdx,
       lessonIdx,
@@ -16,7 +16,6 @@ export class Page extends Component {
       studentsAnswer,
     } = data;
 
-
     const title = `LESSON ${lessonIdx + 1} - Activity ${activityIdx +
       1}, Question ${questionIdx + 1}`;
 
@@ -26,9 +25,19 @@ export class Page extends Component {
           <Text text={title} />
         </div>
         <div className="main-container">
-          <Tab students={students} answer={studentsAnswer} studentId={studentId}></Tab>
+          <Tab
+            students={students}
+            answer={studentsAnswer}
+            studentId={studentId}
+          />
           <div className="answer-container">
-            <Answer answer={answers} options={options} stimulus={stimulus}></Answer>
+            <Answer
+              answer={answers}
+              options={options}
+              stimulus={stimulus}
+              studentsAnswer={studentsAnswer}
+              studentId={studentId}
+            />
           </div>
         </div>
       </div>
@@ -40,5 +49,5 @@ Page.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object,
   students: PropTypes.array,
-  studentId: PropTypes.string
+  studentId: PropTypes.string,
 };

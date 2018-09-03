@@ -5,13 +5,13 @@ import { Audio, Image, Text } from '../index';
 
 export class Stimulus extends Component {
   render() {
-    const { image, audio, title } = this.props.data;
+    const { image, audio, text} = this.props.data;
 
     return (
       <div className={this.props.className}>
-        {title && (
+        {text && (
           <div className="title-container">
-            <Text text={title} />
+            <Text text={text} align={this.props.align}/>
           </div>
         )}
         <div className="stimulus-bottom">
@@ -34,4 +34,5 @@ export class Stimulus extends Component {
 Stimulus.propTypes = {
   className: PropTypes.string,
   data: PropTypes.object,
+  align: PropTypes.string
 };

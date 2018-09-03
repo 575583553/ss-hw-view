@@ -1,12 +1,7 @@
 import Http from './http';
 import FormatData from './formatData';
 import config from '../config/config';
-const {
-  bookUrl,
-  answewrUrl,
-  sudentInfo,
-  activityInfo /* , resource */,
-} = config;
+const { bookUrl, answewrUrl, sudentInfo, activityInfo, resource } = config;
 
 class GetData {
   getBookInfo() {
@@ -51,6 +46,7 @@ class GetData {
       bookInfo,
       answers,
       activityInfo.Activities,
+      resource,
     );
     return resultInfo;
   }

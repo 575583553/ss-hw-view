@@ -19,7 +19,7 @@ class FormatData {
     return this.seekInfo(info, 16);
   }
 
-  parseActivity(info, activitys) {
+  parseActivity(info = [], activitys = []) {
     const activityInfo = this.activity(info);
     const result = [];
 
@@ -51,7 +51,19 @@ class FormatData {
     return result;
   }
 
-  parserLesson(info, answer, activitys) {
+  parserResources(data, resource) {
+    data.forEach((item, idx) => {
+      const { audio, image } = item;
+      const option = data[idx];
+      if (audio)
+        option.audio = `${resource}${audio.replace('resource://', '')}`;
+      if (image)
+        option.image = `${resource}${image.replace('resource://', '')}`;
+    });
+    return data;
+  }
+
+  parserLesson(info = [], answer = [], activitys = []) {
     const result = [];
     const lessonInfo = this.lesson(info);
     const activityInfo = this.parseActivity(info, activitys);
@@ -132,7 +144,7 @@ class FormatData {
     return result;
   }
 
-  parserResult(info = [], answer = [], activitysInfo = []) {
+  parserResult(info = [], answer = [], activitysInfo = [], resource) {
     let result = [];
     let questions = [];
     const units = this.unit(info);
@@ -148,6 +160,15 @@ class FormatData {
     lessonInfo.forEach((lesson) => {
       lesson.activitys.forEach((activity) => {
         activity.questions.forEach((question, idx) => {
+          //Sort studentsAnswer
+          question.studentsAnswer &&
+            question.studentsAnswer.forEach((answer, idx) => {
+              let actualOption = question.studentsAnswer[idx].optionSelection;
+              actualOption = answer.optionSelection.sort((a, b) => {
+                return a.test - b.test;
+              });
+            });
+
           questions.push({
             unitKey: lesson.ParentNodeKey,
             lessonIdx: lesson.Sequence,
@@ -168,11 +189,12 @@ class FormatData {
             return activity.Questions.some((question) => {
               if (question.Key === ques.questionKey) {
                 const { tests, options, answers } = question.Body;
+
                 result[uidx].questions.push({
                   ...ques,
-                  options,
+                  options: this.parserResources(options, resource),
                   answers,
-                  stimulus: tests,
+                  stimulus: this.parserResources(tests, resource),
                 });
               } else return false;
             });
