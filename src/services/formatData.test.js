@@ -196,6 +196,26 @@ test('should have a well working parserLesson function', () => {
   lessonSpy.mockRestore();
 });
 
+test('should have a well working parserResource function', () => {
+  const mockData = [
+    {
+      audio: 'resource://test.audio',
+      image: 'resource://test.image',
+    },
+  ];
+  const mockResource = 'resourceHeader://';
+  const emptyResult = formatData.parserResources();
+  const result = formatData.parserResources(mockData, mockResource);
+
+  expect(emptyResult).toEqual([]);
+  expect(result).toEqual([
+    {
+      audio: 'resourceHeader://test.audio',
+      image: 'resourceHeader://test.image',
+    },
+  ]);
+});
+
 test('should have a parser result function', () => {
   expect(formatData.parserResult).toBeDefined();
 });
