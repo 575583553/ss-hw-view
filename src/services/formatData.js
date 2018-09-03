@@ -52,13 +52,13 @@ class FormatData {
   }
 
   parserResources(data = [], resource = '') {
-    data.forEach((item, idx) => {
-      const { audio, image } = item;
-      const option = data[idx];
-      if (audio)
-        option.audio = `${resource}${audio.replace('resource://', '')}`;
-      if (image)
-        option.image = `${resource}${image.replace('resource://', '')}`;
+    const parseItems = ['audio', 'image'];
+    data.forEach((item) => {
+      parseItems.forEach((parseItem) => {
+        const existItem = item[parseItem];
+        if (existItem)
+          item[parseItem] = existItem.replace('resource://', resource);
+      });
     });
     return data;
   }
@@ -162,11 +162,7 @@ class FormatData {
         activity.questions.forEach((question, idx) => {
           //Sort studentsAnswer
           question.studentsAnswer &&
-            question.studentsAnswer.forEach((answer /* , idx */) => {
-              // let actualOption = question.studentsAnswer[idx].optionSelection;
-              // actualOption = answer.optionSelection.sort((a, b) => {
-              //   return a.test - b.test;
-              // });
+            question.studentsAnswer.forEach((answer) => {
               answer.optionSelection.sort((a, b) => {
                 return a.test - b.test;
               });

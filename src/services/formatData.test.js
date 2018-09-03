@@ -197,6 +197,7 @@ test('should have a well working parserResource function', () => {
     {
       audio: 'resource://test.audio',
       image: 'resource://test.image',
+      text: 'resource://test.text',
     },
   ];
   const mockResource = 'resourceHeader://';
@@ -208,6 +209,7 @@ test('should have a well working parserResource function', () => {
     {
       audio: 'resourceHeader://test.audio',
       image: 'resourceHeader://test.image',
+      text: 'resource://test.text',
     },
   ]);
 });
