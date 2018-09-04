@@ -14,6 +14,7 @@ class GetData {
       else {
         const bookInfo = await this.getBookInfo();
         this.parser = new Parser(bookInfo);
+        resolve();
       }
     });
   }
@@ -36,8 +37,7 @@ class GetData {
 
   async getUnit() {
     await this.getStart();
-    // const bookInfo = await this.getBookInfo();
-    const unit = this.parser.unit();
+    const unit = this.parser.unit;
     return unit;
   }
 

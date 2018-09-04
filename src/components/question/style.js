@@ -14,9 +14,9 @@ export const Question = styled(component)`
   .correct-answer {
     width: 100%;
     border: 2px solid #76cd48;
-    margin: 20px 0;
   }
   .student-answer {
     width: 80%;
+    margin-top: 20px;
   }
 `;

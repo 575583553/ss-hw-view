@@ -16,6 +16,7 @@ export class Unit extends Component {
 
   async componentDidMount() {
     const unit = await GetData.getUnit();
+    console.log(unit);
     this.setState({ unit: unit });
   }
 

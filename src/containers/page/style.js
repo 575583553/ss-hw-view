@@ -12,6 +12,8 @@ export const Page = styled(component)`
   }
   .answer-container {
     width: 1024px;
+    background: #f0f7f9;
     margin: 0 auto;
+    min-height: calc(100vh - 314px);
   }
 `;

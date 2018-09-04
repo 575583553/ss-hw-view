@@ -11,10 +11,10 @@ export class Question extends Component {
       <div className={this.props.className}>
         <div className="info-item">
           <div className="correct-answer">
-            <Stimulus data={answer} />
+            <Stimulus data={answer} size="14px" />
           </div>
           <div className="student-answer">
-            {studentsAnswer &&
+            {studentsAnswer ? (
               studentsAnswer.map((student) => {
                 return (
                   student.studentId === studentId && (
@@ -27,7 +27,10 @@ export class Question extends Component {
                     />
                   )
                 );
-              })}
+              })
+            ) : (
+              <div>miss</div>
+            )}
           </div>
         </div>
       </div>

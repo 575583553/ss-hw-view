@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Answer as component } from './component';
 
 export const Answer = styled(component)`
+  width: 100%;
   display: flex;
-  background: #f0f7f9;
+  justify-content: center;
   padding-top: 70px;
   .stimulus-container {
     width: 30%;
@@ -22,10 +23,10 @@ export const Answer = styled(component)`
   .info-container {
     display: flex;
     width: 120px;
-    margin-right: 15px;
   }
   .lab {
     font-size: 14px;
+    line-height: 28px;
     color: #666;
   }
 `;
